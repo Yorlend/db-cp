@@ -10,5 +10,6 @@
             "username": "cw_user",
             "password": "cw_password"
         }
-    ]
+    ],
+    "cmake.configureOnOpen": false
 }
