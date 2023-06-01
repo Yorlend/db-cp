@@ -1,0 +1,24 @@
+generator client {
+  provider = "dart run orm"
+  output = "."
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+model RolesDAO {
+  id String @id @default(uuid())
+  role_name String
+  users UserDAO[]
+}
+
+model UserDAO {
+  id String @id @default(uuid())
+  account_name String
+  creation_date DateTime
+  change_date DateTime
+  roleID String
+  role RolesDAO @relation(fields: [roleID], references: [id])
+}
