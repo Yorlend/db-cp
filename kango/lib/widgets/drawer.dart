@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kango/data/entities/user.dart';
 import 'package:kango/services/user_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -38,12 +39,12 @@ class KangoDrawer extends StatelessWidget {
     );
   }
 
-  List<ListOption> _chooseOptions(String userRole) {
-    if (userRole == 'admin') {
+  List<ListOption> _chooseOptions(UserRole userRole) {
+    if (userRole == UserRole.admin) {
       return _adminOptions();
-    } else if (userRole == 'mod') {
+    } else if (userRole == UserRole.moderator) {
       return _modOptions();
-    } else if (userRole == 'user') {
+    } else if (userRole == UserRole.user) {
       return _userOptions();
     } else {
       throw Exception('Unknown role: $userRole');

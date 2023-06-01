@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:kango/data/entities/user.dart';
 import 'package:kango/services/auth.dart';
 import 'package:kango/services/user_provider.dart';
@@ -21,7 +22,8 @@ class AuthPageState extends State<AuthPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      return await AuthService.login(
+      final authService = GetIt.I.get<AuthService>();
+      return await authService.login(
           loginController.text, passwordController.text);
     }
     return null;

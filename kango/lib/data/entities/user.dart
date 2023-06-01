@@ -1,9 +1,16 @@
-import 'package:flutter/material.dart';
+enum UserRole {
+  admin('ADMIN'),
+  moderator('MODERATOR'),
+  user('USER');
 
-class User extends ChangeNotifier {
+  const UserRole(this.name);
+  final String name;
+}
+
+class User {
   final String login;
   final String password;
-  final String role;
+  final UserRole role;
 
   User({
     required this.login,

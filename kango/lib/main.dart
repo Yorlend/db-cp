@@ -1,23 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_it/get_it.dart';
+import 'package:kango/data/entities/user.dart';
+import 'package:kango/data/prisma/prisma_client.dart';
+import 'package:kango/data/repositories/user.dart';
 import 'package:kango/pages/mod_texts.dart';
 import 'package:kango/pages/text_upload_page.dart';
 import 'package:kango/pages/text_viewer.dart';
 import 'package:kango/pages/texts.dart';
 import 'package:kango/pages/user_add.dart';
 import 'package:kango/pages/users.dart';
+import 'package:kango/services/auth.dart';
+import 'package:kango/services/user.dart';
 import 'package:provider/provider.dart';
 
 import 'package:kango/pages/auth.dart';
 import 'package:kango/services/user_provider.dart';
 
-void main() => runApp(MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => UserProvider(),
-        ),
-      ],
-      child: const App(),
-    ));
+void main() async {
+  await dotenv.load(fileName: '.env');
+
+  final prisma = PrismaClient(
+    datasources: Datasources(
+      db: dotenv.env['DATABASE_URL'],
+    ),
+  );
+
+  final userRepo = UserRepository(prisma: prisma);
+  GetIt.I.registerSingleton<AuthService>(AuthService(userRepo));
+  GetIt.I.registerSingleton<UserService>(UserService(userRepo));
+
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (_) => UserProvider(),
+      ),
+    ],
+    child: const App(),
+  ));
+}
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -35,11 +56,11 @@ class App extends StatelessWidget {
                   return const AuthPage();
                 } else {
                   final role = value.currentUser!.role;
-                  if (role == 'admin') {
+                  if (role == UserRole.admin) {
                     return const UsersPage();
-                  } else if (role == 'mod') {
+                  } else if (role == UserRole.moderator) {
                     return const ModTextsPage();
-                  } else if (role == 'user') {
+                  } else if (role == UserRole.user) {
                     return const TextsPage();
                   } else {
                     throw Exception('Unknown role: $role');

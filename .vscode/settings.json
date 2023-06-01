@@ -6,7 +6,7 @@
             "port": 5432,
             "driver": "PostgreSQL",
             "name": "Course Work",
-            "database": "cw_db",
+            "database": "cw_postgres",
             "username": "cw_user",
             "password": "cw_password"
         }

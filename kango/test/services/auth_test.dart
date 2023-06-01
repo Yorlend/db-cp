@@ -1,0 +1,28 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:kango/data/prisma/prisma_client.dart';
+import 'package:kango/data/repositories/user.dart';
+import 'package:kango/services/auth.dart';
+import 'package:test/test.dart';
+
+void main() async {
+  await dotenv.load(fileName: '.env');
+
+  final prisma = PrismaClient(
+    datasources: Datasources(
+      db: dotenv.env['DATABASE_URL'],
+    ),
+  );
+
+  final userRepo = UserRepository(
+    prisma: prisma,
+  );
+  final service = AuthService(userRepo);
+
+  test('should login as admin', () async {
+    final user = await service.login('admin', 'admin123');
+
+    expect(user, isNotNull);
+    expect(user!.login, equals('admin'));
+    expect(user.role, equals(Role.admin.toString()));
+  });
+}

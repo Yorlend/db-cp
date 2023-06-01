@@ -1,29 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import 'package:kango/data/entities/user.dart';
+import 'package:kango/services/user.dart';
 import 'package:kango/widgets/drawer.dart';
+import 'package:kango/widgets/input_user.dart';
 
 class UsersPage extends StatelessWidget {
   const UsersPage({super.key});
 
   Future<List<User>> _getUsers() async {
-    return [
-      User(
-        login: 'admin',
-        role: 'admin',
-        password: 'admin',
-      ),
-      User(
-        login: 'mod',
-        role: 'mod',
-        password: 'mod',
-      ),
-      User(
-        login: 'user',
-        role: 'user',
-        password: 'user',
-      )
-    ];
+    final userService = GetIt.I.get<UserService>();
+    return await userService.getUsers();
   }
 
   @override
@@ -33,28 +21,49 @@ class UsersPage extends StatelessWidget {
         title: const Text('Пользователи'),
       ),
       drawer: const KangoDrawer(),
-      body: FutureBuilder(
-        future: _getUsers(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView(
-              children:
-                  snapshot.data!.map((e) => _userWidget(context, e)).toList(),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+      body: _usersListWidget(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return InputUserWidget((accountName, password, role) {
+                final userService = GetIt.I.get<UserService>();
+                userService.register(accountName, password, role).catchError(
+                      (err) => ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(err.toString()))),
+                    );
+              });
+            },
+          );
         },
+        child: const Icon(Icons.add),
       ),
+    );
+  }
+
+  Widget _usersListWidget(BuildContext context) {
+    return FutureBuilder(
+      future: _getUsers(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView(
+            children:
+                snapshot.data!.map((e) => _userWidget(context, e)).toList(),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 
   Widget _userWidget(BuildContext context, User user) {
     return ListTile(
       title: Text(user.login),
-      subtitle: Text(user.role),
+      subtitle: Text(user.role.name),
     );
   }
 }
