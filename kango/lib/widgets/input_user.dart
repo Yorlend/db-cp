@@ -14,7 +14,7 @@ class _InputUserWidgetState extends State<InputUserWidget> {
   final _formKey = GlobalKey<FormState>();
   final _loginController = TextEditingController();
   final _passwordController = TextEditingController();
-  UserRole? _role;
+  UserRole _role = UserRole.user;
 
   @override
   void dispose() {
@@ -25,64 +25,79 @@ class _InputUserWidgetState extends State<InputUserWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          TextFormField(
-            controller: _loginController,
-            decoration: const InputDecoration(
-              labelText: 'Логин',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            TextFormField(
+              controller: _loginController,
+              decoration: const InputDecoration(
+                labelText: 'Логин',
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Введите логин';
+                }
+                return null;
+              },
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Введите логин';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            controller: _passwordController,
-            decoration: const InputDecoration(
-              labelText: 'Пароль',
+            const SizedBox(height: 8),
+            TextFormField(
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Пароль',
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Введите пароль';
+                }
+                return null;
+              },
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Введите пароль';
-              }
-              return null;
-            },
-          ),
-          DropdownButton(
-            value: _role,
-            items: const [
-              DropdownMenuItem(
-                value: UserRole.user,
-                child: Text('Пользователь'),
-              ),
-              DropdownMenuItem(
-                value: UserRole.moderator,
-                child: Text('Модератор'),
-              ),
-              DropdownMenuItem(
-                value: UserRole.admin,
-                child: Text('Администратор'),
-              ),
-            ],
-            onChanged: (value) => setState(() => _role = value),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate() && _role != null) {
-                final login = _loginController.text;
-                final password = _passwordController.text;
-                widget.onSubmit(login, password, _role!);
-                Navigator.of(context).pop();
-              }
-            },
-            child: const Text('Сохранить'),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                const Text('Роль:'),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: DropdownButton(
+                    isExpanded: true,
+                    value: _role,
+                    items: const [
+                      DropdownMenuItem(
+                        value: UserRole.user,
+                        child: Text('Пользователь'),
+                      ),
+                      DropdownMenuItem(
+                        value: UserRole.moderator,
+                        child: Text('Модератор'),
+                      ),
+                      DropdownMenuItem(
+                        value: UserRole.admin,
+                        child: Text('Администратор'),
+                      ),
+                    ],
+                    onChanged: (value) => setState(() => _role = value!),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  final login = _loginController.text;
+                  final password = _passwordController.text;
+                  widget.onSubmit(login, password, _role);
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Text('Сохранить'),
+            ),
+          ],
+        ),
       ),
     );
   }

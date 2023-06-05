@@ -48,9 +48,9 @@ class AuthPageState extends State<AuthPage> {
                   decoration: const InputDecoration(labelText: 'Login'),
                   keyboardType: TextInputType.name,
                   validator: (value) {
-                    if (value!.isEmpty || value.length < 5) {
-                      return 'Login must be at least 5 characters long.';
-                    }
+                    // if (value!.isEmpty || value.length < 5) {
+                    //   return 'Login must be at least 5 characters long.';
+                    // }
                     return null;
                   },
                 ),
@@ -59,9 +59,9 @@ class AuthPageState extends State<AuthPage> {
                   decoration: const InputDecoration(labelText: 'Password'),
                   obscureText: true,
                   validator: (value) {
-                    if (value!.isEmpty || value.length < 6) {
-                      return 'Password must be at least 6 characters long.';
-                    }
+                    // if (value!.isEmpty || value.length < 6) {
+                    //   return 'Password must be at least 6 characters long.';
+                    // }
                     return null;
                   },
                 ),

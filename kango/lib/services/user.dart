@@ -1,26 +1,36 @@
 import 'package:kango/data/entities/user.dart';
 import 'package:kango/data/repositories/user.dart';
+import 'package:kango/services/auth.dart';
 
 class UserService {
   final UserRepository _userRepository;
+  final AuthService _authService;
 
-  const UserService(this._userRepository);
+  const UserService(this._authService, this._userRepository);
 
   Future<User> register(
-    String accountName,
+    String login,
     String password,
     UserRole role,
   ) async {
-    return _userRepository.register(
-      User(
-        login: accountName,
-        password: password,
-        role: role,
-      ),
-    );
+    if (!_authService.isAdmin) {
+      throw 'Пользователь не администратор';
+    } else {
+      return _userRepository.register(
+        User(
+          login: login,
+          password: password,
+          role: role,
+        ),
+      );
+    }
   }
 
   Future<List<User>> getUsers() async {
-    return _userRepository.findAll();
+    if (!_authService.isAdmin) {
+      throw 'Пользователь не администратор';
+    } else {
+      return _userRepository.findAll();
+    }
   }
 }

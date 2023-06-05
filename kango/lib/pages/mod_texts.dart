@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
 
 import 'package:kango/data/entities/text.dart' as entity;
+import 'package:kango/services/text_provider.dart';
 import 'package:kango/widgets/drawer.dart';
+import 'package:kango/widgets/text_edit.dart';
+import 'package:provider/provider.dart';
 
 /// Страница для управления текстами, загруженными данным пользователем
 /// (менеджером).
 class ModTextsPage extends StatelessWidget {
   const ModTextsPage({super.key});
 
-  Future<List<entity.Text>> _getMyTexts() async {
-    return [
-      entity.Text(
-        title: 'Название текста 1',
-        content: 'Контент текста 1',
-        createdAt: DateTime.now(),
-      ),
-      entity.Text(
-        title: 'Название текста 2',
-        content: 'Контент текста 2',
-        createdAt: DateTime.now(),
-      ),
-      entity.Text(
-        title: 'Название текста 3',
-        content: 'Контент текста 3',
-        createdAt: DateTime.now(),
-      ),
-    ];
+  void _showEditDialog(
+      BuildContext context, TextsProvider provider, entity.Text text) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => TextEditBottomSheet(context, provider, text),
+    );
   }
 
   @override
@@ -35,22 +26,20 @@ class ModTextsPage extends StatelessWidget {
         title: const Text('Your texts'),
       ),
       drawer: const KangoDrawer(),
-      body: FutureBuilder(
-        future: _getMyTexts(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+      body: Consumer<TextsProvider>(
+        builder: (context, provider, child) {
           return Column(
             children: [
               Expanded(
-                child: ListView(
-                  children: snapshot.data!
-                      .map((e) => _textWidget(context, e))
-                      .toList(),
-                ),
+                child: provider.texts.isEmpty
+                    ? const Center(
+                        child: Text('Текстов нет, но вы держитесь'),
+                      )
+                    : ListView(
+                        children: provider.texts
+                            .map((e) => _textWidget(context, provider, e))
+                            .toList(),
+                      ),
               ),
               Padding(
                 padding: const EdgeInsets.all(32.0),
@@ -71,19 +60,20 @@ class ModTextsPage extends StatelessWidget {
     );
   }
 
-  Widget _textWidget(BuildContext context, entity.Text text) {
+  Widget _textWidget(
+      BuildContext context, TextsProvider provider, entity.Text text) {
     return ListTile(
       title: Text(text.title),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(text.content),
-          Text(text.createdAt.toString()),
+          // Text(text.createdAt.toString()),
         ],
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete),
-        onPressed: () {},
+        icon: const Icon(Icons.edit),
+        onPressed: () => _showEditDialog(context, provider, text),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kango/data/entities/user.dart';
 import 'package:kango/data/prisma/prisma_client.dart';
+import 'package:kango/data/repositories/text.dart';
 import 'package:kango/data/repositories/user.dart';
 import 'package:kango/pages/mod_texts.dart';
 import 'package:kango/pages/text_upload_page.dart';
@@ -11,6 +12,7 @@ import 'package:kango/pages/texts.dart';
 import 'package:kango/pages/user_add.dart';
 import 'package:kango/pages/users.dart';
 import 'package:kango/services/auth.dart';
+import 'package:kango/services/text_provider.dart';
 import 'package:kango/services/user.dart';
 import 'package:provider/provider.dart';
 
@@ -27,13 +29,21 @@ void main() async {
   );
 
   final userRepo = UserRepository(prisma: prisma);
-  GetIt.I.registerSingleton<AuthService>(AuthService(userRepo));
-  GetIt.I.registerSingleton<UserService>(UserService(userRepo));
+  final textRepo = TextRepository(prisma: prisma);
+
+  final authService = AuthService(userRepo);
+  final userService = UserService(authService, userRepo);
+
+  GetIt.I.registerSingleton<AuthService>(authService);
+  GetIt.I.registerSingleton<UserService>(userService);
 
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
         create: (_) => UserProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => TextsProvider(authService, textRepo),
       ),
     ],
     child: const App(),
@@ -74,7 +84,7 @@ class App extends StatelessWidget {
         '/users/add': (context) => const UserAddPage(),
       },
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.teal,
       ),
       home: const AuthPage(),
     );

@@ -2,12 +2,12 @@ import 'package:kango/data/entities/user.dart';
 import 'package:kango/data/prisma/prisma_client.dart';
 
 class UserRepository {
-  final PrismaClient prisma;
+  final PrismaClient _prisma;
 
-  UserRepository({required this.prisma});
+  UserRepository({required PrismaClient prisma}) : _prisma = prisma;
 
   Future<User> register(User u) async {
-    final result = await prisma.usersDAO.create(
+    final result = await _prisma.usersDAO.create(
       data: UsersDAOCreateInput(
         accountName: u.login,
         password: u.password,
@@ -19,7 +19,7 @@ class UserRepository {
   }
 
   Future<User> findByAccountName(String accountName) async {
-    final result = await prisma.usersDAO.findUnique(
+    final result = await _prisma.usersDAO.findUnique(
       where: UsersDAOWhereUniqueInput(
         accountName: accountName,
       ),
@@ -31,7 +31,7 @@ class UserRepository {
   }
 
   Future<List<User>> findAll() async {
-    final result = await prisma.usersDAO.findMany();
+    final result = await _prisma.usersDAO.findMany();
     return result.map(_toModel).toList();
   }
 
