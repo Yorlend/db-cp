@@ -1,5 +1,7 @@
 import 'package:kango/data/entities/text.dart';
+import 'package:kango/data/entities/user.dart';
 import 'package:kango/data/prisma/prisma_client.dart';
+import 'package:kango/data/repositories/user.dart';
 
 class TextRepository {
   final PrismaClient _prisma;
@@ -22,6 +24,20 @@ class TextRepository {
       ),
     );
     return result.map(_toModel).toList();
+  }
+
+  Future<List<User>> findAccecients(String textId) async {
+    final result = await _prisma.usersDAO.findMany(
+      where: UsersDAOWhereInput(
+        texts: TextsDAOListRelationFilter(
+          some: TextsDAOWhereInput(
+            id: StringFilter(equals: textId),
+          ),
+        ),
+      ),
+    );
+
+    return result.map(UserRepository.toModel).toList();
   }
 
   Future<Text> findByID(String id) async {
@@ -57,6 +73,29 @@ class TextRepository {
       data: TextsDAOUpdateInput(
         title: StringFieldUpdateOperationsInput(set: newTitle),
         text: StringFieldUpdateOperationsInput(set: newContent),
+      ),
+    );
+  }
+
+  Future<void> updateAccecients(String textId, List<User> newReaders) async {
+    await _prisma.textsDAO.update(
+      where: TextsDAOWhereUniqueInput(id: textId),
+      data: const TextsDAOUpdateInput(
+        readers: UsersDAOUpdateManyWithoutTextsNestedInput(
+          set: [],
+        ),
+      ),
+    );
+    await _prisma.textsDAO.update(
+      where: TextsDAOWhereUniqueInput(id: textId),
+      data: TextsDAOUpdateInput(
+        readers: UsersDAOUpdateManyWithoutTextsNestedInput(
+          connect: newReaders.map(
+            (e) => UsersDAOWhereUniqueInput(
+              accountName: e.login,
+            ),
+          ),
+        ),
       ),
     );
   }

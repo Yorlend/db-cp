@@ -33,4 +33,12 @@ class UserService {
       return _userRepository.findAll();
     }
   }
+
+  Future<List<User>> getRegularUsers() async {
+    if (!_authService.isModerator) {
+      throw 'Пользователь не модератор';
+    } else {
+      return _userRepository.findRegularUsers();
+    }
+  }
 }

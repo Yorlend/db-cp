@@ -15,7 +15,7 @@ class UserRepository {
       ),
     );
 
-    return _toModel(result);
+    return toModel(result);
   }
 
   Future<User> findByAccountName(String accountName) async {
@@ -27,15 +27,24 @@ class UserRepository {
     if (result == null) {
       throw Exception('User not found');
     }
-    return _toModel(result);
+    return toModel(result);
   }
 
   Future<List<User>> findAll() async {
     final result = await _prisma.usersDAO.findMany();
-    return result.map(_toModel).toList();
+    return result.map(toModel).toList();
   }
 
-  Role _roleFromString(String role) {
+  Future<List<User>> findRegularUsers() async {
+    final result = await _prisma.usersDAO.findMany(
+      where: const UsersDAOWhereInput(
+        role: EnumRoleFilter(equals: Role.user),
+      ),
+    );
+    return result.map(toModel).toList();
+  }
+
+  static Role _roleFromString(String role) {
     switch (role) {
       case 'ADMIN':
         return Role.admin;
@@ -48,7 +57,7 @@ class UserRepository {
     }
   }
 
-  UserRole _userRoleFromString(String role) {
+  static UserRole _userRoleFromString(String role) {
     switch (role) {
       case 'ADMIN':
         return UserRole.admin;
@@ -61,7 +70,7 @@ class UserRepository {
     }
   }
 
-  User _toModel(UsersDAO u) {
+  static User toModel(UsersDAO u) {
     return User(
       login: u.accountName,
       password: u.password,
