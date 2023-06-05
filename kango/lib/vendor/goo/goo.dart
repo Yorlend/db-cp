@@ -48,8 +48,10 @@ class Goo {
     final jsonResponse = jsonDecode(response.body);
     final result = <WordDescription>[];
 
-    for (final w in jsonResponse['word_list'][0]) {
-      result.add(WordDescription(word: w[0], reading: w[2]));
+    for (final sentence in jsonResponse['word_list']) {
+      for (final w in sentence) {
+        result.add(WordDescription(word: w[0], reading: w[2]));
+      }
     }
 
     return result;

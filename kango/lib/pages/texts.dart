@@ -34,8 +34,10 @@ class TextsPage extends StatelessWidget {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text.content),
-          Text(text.createdAt.toString()),
+          Text(
+            text.content,
+            overflow: TextOverflow.ellipsis,
+          ),
         ],
       ),
       onTap: () => Navigator.of(context).pushNamed('/text', arguments: {
