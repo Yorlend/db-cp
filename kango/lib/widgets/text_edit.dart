@@ -37,17 +37,13 @@ class _TextEditBottomSheetState extends State<TextEditBottomSheet> {
       context: context,
       builder: (context) {
         final usersService = GetIt.I.get<UserService>();
-        return Consumer<TextsProvider>(
-          builder: (context, provider, child) {
-            return UsersSelectorDialog(
-              allUsersFuture: usersService.getRegularUsers(),
-              selectedUsersFuture: Future.value(_selectedUsers),
-              onConfirmed: (users) {
-                setState(() {
-                  _selectedUsers = users;
-                });
-              },
-            );
+        return UsersSelectorDialog(
+          allUsersFuture: usersService.getRegularUsers(),
+          selectedUsersFuture: Future.value(_selectedUsers),
+          onConfirmed: (users) {
+            setState(() {
+              _selectedUsers = users;
+            });
           },
         );
       },
@@ -76,6 +72,7 @@ class _TextEditBottomSheetState extends State<TextEditBottomSheet> {
               ),
               TextField(
                 controller: _textEditingController,
+                maxLines: null,
                 decoration: const InputDecoration(
                   labelText: 'Текст',
                 ),

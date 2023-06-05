@@ -37,6 +37,15 @@ class UsersSelectorDialogState extends State<UsersSelectorDialog> {
     return _selectedUsers!.any((u) => u.login == user.login);
   }
 
+  void _selectUser(User user) {
+    _selectedUsers!.add(user);
+  }
+
+  void _deselectUser(User user) {
+    final index = _selectedUsers!.indexWhere((u) => u.login == user.login);
+    _selectedUsers!.removeAt(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -65,9 +74,7 @@ class UsersSelectorDialogState extends State<UsersSelectorDialog> {
       content: _allUsers == null || _selectedUsers == null
           ? const SizedBox(
               height: 200,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
+              child: Center(child: CircularProgressIndicator()),
             )
           : SingleChildScrollView(
               child: ListBody(
@@ -76,14 +83,16 @@ class UsersSelectorDialogState extends State<UsersSelectorDialog> {
                       (u) => CheckboxListTile(
                         title: Text(u.login),
                         value: _userSelected(u),
-                        onChanged: (newValue) {
-                          setState(() {
-                            if (newValue!) {
-                              _selectedUsers!.add(u);
-                            } else {
-                              _selectedUsers!.remove(u);
-                            }
-                          });
+                        onChanged: (bool? newValue) {
+                          setState(
+                            () {
+                              if (newValue!) {
+                                _selectUser(u);
+                              } else {
+                                _deselectUser(u);
+                              }
+                            },
+                          );
                         },
                       ),
                     )

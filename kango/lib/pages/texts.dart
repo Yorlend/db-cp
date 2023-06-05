@@ -12,7 +12,7 @@ class TextsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Texts'),
+        title: const Text('Тексты для чтения'),
       ),
       drawer: const KangoDrawer(),
       body: Center(

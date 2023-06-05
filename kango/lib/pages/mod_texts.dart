@@ -23,38 +23,22 @@ class ModTextsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your texts'),
+        title: const Text('Тексты'),
       ),
       drawer: const KangoDrawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pushNamed('/texts/upload'),
+        child: const Icon(Icons.add),
+      ),
       body: Consumer<TextsProvider>(
         builder: (context, provider, child) {
-          return Column(
-            children: [
-              Expanded(
-                child: provider.texts.isEmpty
-                    ? const Center(
-                        child: Text('Текстов нет, но вы держитесь'),
-                      )
-                    : ListView(
-                        children: provider.texts
-                            .map((e) => _textWidget(context, provider, e))
-                            .toList(),
-                      ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: MaterialButton(
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed('/texts/upload'),
-                  color: Theme.of(context).primaryColor,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Добавить текст'),
-                  ),
-                ),
-              ),
-            ],
-          );
+          return provider.texts.isEmpty
+              ? const Center(child: Text('Текстов нет'))
+              : ListView(
+                  children: provider.texts
+                      .map((e) => _textWidget(context, provider, e))
+                      .toList(),
+                );
         },
       ),
     );
@@ -67,8 +51,10 @@ class ModTextsPage extends StatelessWidget {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(text.content),
-          // Text(text.createdAt.toString()),
+          Text(
+            text.content,
+            overflow: TextOverflow.ellipsis,
+          ),
         ],
       ),
       trailing: IconButton(

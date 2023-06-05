@@ -16,7 +16,14 @@ class KangoDrawer extends StatelessWidget {
           return Drawer(
             child: ListView(padding: EdgeInsets.zero, children: [
               const DrawerHeader(
-                child: Text('Kango'),
+                child: Text(
+                  'Kango',
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Times',
+                  ),
+                ),
               ),
               ..._chooseOptions(value.currentUser!.role).map((e) {
                 return ListTile(
@@ -54,7 +61,7 @@ class KangoDrawer extends StatelessWidget {
   List<ListOption> _userOptions() {
     return [
       ListOption(
-        title: 'Мои тексты',
+        title: 'Тексты для чтения',
         pageName: '/home',
       ),
     ];
@@ -63,7 +70,7 @@ class KangoDrawer extends StatelessWidget {
   List<ListOption> _modOptions() {
     return [
       ListOption(
-        title: 'Мои тексты',
+        title: 'Тексты',
         pageName: '/home',
       ),
     ];
