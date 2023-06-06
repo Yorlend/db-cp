@@ -60,6 +60,13 @@ class UserRepository {
   }
 
   Future<void> deleteUser(String login) async {
+    await _prisma.dictionariesDAO.deleteMany(
+      where: DictionariesDAOWhereInput(
+        owner: UsersDAORelationFilter(
+          $is: UsersDAOWhereInput(accountName: StringFilter(equals: login)),
+        ),
+      ),
+    );
     await _prisma.usersDAO.delete(
       where: UsersDAOWhereUniqueInput(accountName: login),
     );
