@@ -12,6 +12,24 @@ class WordRepository {
     return result.map(_toModel).toList();
   }
 
+  Future<List<Word>> findAllWordsForUser(User user) async {
+    final result = await _prisma.wordsDAO.findMany(
+      where: WordsDAOWhereInput(
+        dicts: DictionariesDAOListRelationFilter(
+          some: DictionariesDAOWhereInput(
+            owner: UsersDAORelationFilter(
+              $is: UsersDAOWhereInput(
+                accountName: StringFilter(equals: user.login),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    return result.map(_toModel).toList();
+  }
+
   Future<Word> findByWord(String word) async {
     final result = await _prisma.wordsDAO.findUnique(
       where: WordsDAOWhereUniqueInput(

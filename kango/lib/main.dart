@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:kango/pages/user/dict_viewer.dart';
+import 'package:provider/provider.dart';
+
 import 'package:kango/data/entities/user.dart';
 import 'package:kango/data/prisma/prisma_client.dart';
 import 'package:kango/data/repositories/text.dart';
 import 'package:kango/data/repositories/user.dart';
 import 'package:kango/data/repositories/word.dart';
 import 'package:kango/pages/mod/texts.dart';
-import 'package:kango/pages/text_upload_page.dart';
-import 'package:kango/pages/text_viewer.dart';
+import 'package:kango/pages/mod/text_upload_page.dart';
+import 'package:kango/pages/user/text_viewer.dart';
 import 'package:kango/pages/user/texts.dart';
 import 'package:kango/pages/admin/user_add.dart';
 import 'package:kango/pages/admin/users.dart';
@@ -16,8 +19,6 @@ import 'package:kango/services/auth.dart';
 import 'package:kango/services/text_provider.dart';
 import 'package:kango/services/user.dart';
 import 'package:kango/services/word.dart';
-import 'package:provider/provider.dart';
-
 import 'package:kango/pages/auth.dart';
 import 'package:kango/services/user_provider.dart';
 
@@ -87,6 +88,7 @@ class App extends StatelessWidget {
         '/texts/upload': (context) => const TextUploadPage(),
         '/users': (context) => const UsersPage(),
         '/users/add': (context) => const UserAddPage(),
+        '/dictionary': (context) => const DictViewerPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.teal,

@@ -11,6 +11,11 @@ class WordService {
 
   WordService(this._authService, this._wordRepository);
 
+  Future<List<Word>> getAllWords() async {
+    final user = _authService.currentUser;
+    return await _wordRepository.findAllWordsForUser(user);
+  }
+
   Future<List<String>> getWordDefinitions(String word) async {
     if (_wordDefinitionCache.containsKey(word)) {
       return _wordDefinitionCache[word]!;

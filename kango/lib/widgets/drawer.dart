@@ -67,6 +67,10 @@ class KangoDrawer extends StatelessWidget {
         title: 'Тексты для чтения',
         pageName: '/home',
       ),
+      ListOption(
+        title: 'Словарь',
+        pageName: '/dictionary',
+      ),
     ];
   }
 
