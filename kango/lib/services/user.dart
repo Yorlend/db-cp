@@ -41,4 +41,20 @@ class UserService {
       return _userRepository.findRegularUsers();
     }
   }
+
+  Future<void> updateUser(String oldLogin, User newUser) async {
+    if (!_authService.isAdmin) {
+      throw 'Пользователь не администратор';
+    } else {
+      await _userRepository.updateUser(oldLogin, newUser);
+    }
+  }
+
+  Future<void> deleteUser(String login) async {
+    if (!_authService.isAdmin) {
+      throw 'Пользователь не администратор';
+    } else {
+      await _userRepository.deleteUser(login);
+    }
+  }
 }

@@ -14,32 +14,35 @@ class KangoDrawer extends StatelessWidget {
           throw Exception('User is not logged in');
         } else {
           return Drawer(
-            child: ListView(padding: EdgeInsets.zero, children: [
-              const DrawerHeader(
-                child: Text(
-                  'Kango',
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Times',
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  child: Text(
+                    'Kango',
+                    style: TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Times',
+                    ),
                   ),
                 ),
-              ),
-              ..._chooseOptions(value.currentUser!.role).map((e) {
-                return ListTile(
-                  title: Text(e.title),
-                  onTap: () =>
-                      Navigator.of(context).pushReplacementNamed(e.pageName),
-                );
-              }).toList(),
-              ListTile(
-                title: const Text('Выйти'),
-                onTap: () {
-                  value.currentUser = null;
-                  Navigator.of(context).pushReplacementNamed('/auth');
-                },
-              ),
-            ]),
+                ..._chooseOptions(value.currentUser!.role).map((e) {
+                  return ListTile(
+                    title: Text(e.title),
+                    onTap: () =>
+                        Navigator.of(context).pushReplacementNamed(e.pageName),
+                  );
+                }).toList(),
+                ListTile(
+                  title: const Text('Выйти'),
+                  onTap: () {
+                    value.currentUser = null;
+                    Navigator.of(context).pushReplacementNamed('/auth');
+                  },
+                ),
+              ],
+            ),
           );
         }
       },

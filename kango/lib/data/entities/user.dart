@@ -1,10 +1,11 @@
 enum UserRole {
-  admin('ADMIN'),
-  moderator('MODERATOR'),
-  user('USER');
+  admin('ADMIN', 'Администратор'),
+  moderator('MODERATOR', 'Модератор'),
+  user('USER', 'Пользователь');
 
-  const UserRole(this.name);
+  const UserRole(this.name, this.localizedName);
   final String name;
+  final String localizedName;
 }
 
 class User {

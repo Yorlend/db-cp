@@ -44,6 +44,27 @@ class UserRepository {
     return result.map(toModel).toList();
   }
 
+  Future<void> updateUser(String oldLogin, User newUser) async {
+    await _prisma.usersDAO.update(
+      where: UsersDAOWhereUniqueInput(accountName: oldLogin),
+      data: UsersDAOUpdateInput(
+        accountName: StringFieldUpdateOperationsInput(
+          set: newUser.login,
+        ),
+        password: StringFieldUpdateOperationsInput(
+          set: newUser.password,
+        ),
+        role: _roleFromUserRole(newUser.role),
+      ),
+    );
+  }
+
+  Future<void> deleteUser(String login) async {
+    await _prisma.usersDAO.delete(
+      where: UsersDAOWhereUniqueInput(accountName: login),
+    );
+  }
+
   static Role _roleFromString(String role) {
     switch (role) {
       case 'ADMIN':
@@ -51,6 +72,19 @@ class UserRepository {
       case 'MODERATOR':
         return Role.moderator;
       case 'USER':
+        return Role.user;
+      default:
+        throw Exception('invalid role value: $role');
+    }
+  }
+
+  static Role _roleFromUserRole(UserRole role) {
+    switch (role) {
+      case UserRole.admin:
+        return Role.admin;
+      case UserRole.moderator:
+        return Role.moderator;
+      case UserRole.user:
         return Role.user;
       default:
         throw Exception('invalid role value: $role');

@@ -4,11 +4,17 @@ import 'package:get_it/get_it.dart';
 import 'package:kango/data/entities/user.dart';
 import 'package:kango/services/user.dart';
 import 'package:kango/widgets/drawer.dart';
+import 'package:kango/widgets/edit_user.dart';
 import 'package:kango/widgets/input_user.dart';
 
-class UsersPage extends StatelessWidget {
+class UsersPage extends StatefulWidget {
   const UsersPage({super.key});
 
+  @override
+  State<UsersPage> createState() => UsersPageState();
+}
+
+class UsersPageState extends State<UsersPage> {
   Future<List<User>> _getUsers() async {
     final userService = GetIt.I.get<UserService>();
     return await userService.getUsers();
@@ -29,7 +35,10 @@ class UsersPage extends StatelessWidget {
             builder: (context) {
               return InputUserWidget((accountName, password, role) {
                 final userService = GetIt.I.get<UserService>();
-                userService.register(accountName, password, role).catchError(
+                userService
+                    .register(accountName, password, role)
+                    .then((u) => setState(() {}))
+                    .catchError(
                       (err) => ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(err.toString()))),
                     );
@@ -63,7 +72,18 @@ class UsersPage extends StatelessWidget {
   Widget _userWidget(BuildContext context, User user) {
     return ListTile(
       title: Text(user.login),
-      subtitle: Text(user.role.name),
+      subtitle: Text(user.role.localizedName),
+      trailing: IconButton(
+        icon: const Icon(Icons.edit),
+        onPressed: () => showModalBottomSheet(
+          context: context,
+          builder: (context) => EditUserWidget(
+            user: user,
+            onSubmit: () => setState(() {}),
+            onDelete: () => setState(() {}),
+          ),
+        ),
+      ),
     );
   }
 }
