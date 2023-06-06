@@ -5,6 +5,7 @@ import 'package:kango/data/entities/user.dart';
 import 'package:kango/data/prisma/prisma_client.dart';
 import 'package:kango/data/repositories/text.dart';
 import 'package:kango/data/repositories/user.dart';
+import 'package:kango/data/repositories/word.dart';
 import 'package:kango/pages/mod/texts.dart';
 import 'package:kango/pages/text_upload_page.dart';
 import 'package:kango/pages/text_viewer.dart';
@@ -14,6 +15,7 @@ import 'package:kango/pages/admin/users.dart';
 import 'package:kango/services/auth.dart';
 import 'package:kango/services/text_provider.dart';
 import 'package:kango/services/user.dart';
+import 'package:kango/services/word.dart';
 import 'package:provider/provider.dart';
 
 import 'package:kango/pages/auth.dart';
@@ -30,12 +32,15 @@ void main() async {
 
   final userRepo = UserRepository(prisma: prisma);
   final textRepo = TextRepository(prisma: prisma);
+  final wordRepo = WordRepository(prisma: prisma);
 
   final authService = AuthService(userRepo);
   final userService = UserService(authService, userRepo);
+  final wordService = WordService(authService, wordRepo);
 
   GetIt.I.registerSingleton<AuthService>(authService);
   GetIt.I.registerSingleton<UserService>(userService);
+  GetIt.I.registerSingleton<WordService>(wordService);
 
   runApp(MultiProvider(
     providers: [

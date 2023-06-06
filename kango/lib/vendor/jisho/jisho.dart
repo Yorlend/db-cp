@@ -17,10 +17,15 @@ class Jisho {
     final jsonResponse = jsonDecode(response.body);
     final result = <String>[];
 
-    for (var w in jsonResponse['data'][0]['senses'][0]['english_definitions']) {
-      result.add(w);
-    }
+    try {
+      for (var w in jsonResponse['data'][0]['senses'][0]
+          ['english_definitions']) {
+        result.add(w);
+      }
 
-    return result;
+      return result;
+    } catch (err) {
+      return [];
+    }
   }
 }

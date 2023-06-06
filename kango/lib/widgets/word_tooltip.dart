@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:kango/data/entities/word.dart';
+import 'package:kango/services/word.dart';
 
-class WordTooltip extends StatelessWidget {
+class WordTooltip extends StatefulWidget {
   final Word word;
 
   const WordTooltip({super.key, required this.word});
+
+  @override
+  State<WordTooltip> createState() => WordTooltipState();
+}
+
+class WordTooltipState extends State<WordTooltip> {
+  bool _wordIsInDictinary = false;
+
+  @override
+  void initState() {
+    super.initState();
+    GetIt.I
+        .get<WordService>()
+        .hasWordInDictionary(widget.word)
+        .then((value) => setState(() => _wordIsInDictinary = value));
+  }
+
+  Future<List<String>> _getWordDefinitions() async {
+    final wordService = GetIt.I.get<WordService>();
+    return await wordService.getWordDefinitions(widget.word.word);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +41,63 @@ class WordTooltip extends StatelessWidget {
             textBaseline: TextBaseline.alphabetic,
             children: [
               Text(
-                word.word,
+                widget.word.word,
                 style: const TextStyle(fontSize: 24.0),
               ),
               const SizedBox(width: 8.0),
-              Text('[${word.reading}]'),
+              Text('[${widget.word.reading}]'),
             ],
           ),
           const SizedBox(height: 8.0),
-          Text('перевод: ${word.meaning}'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              _wordIsInDictinary
+                  ? MaterialButton(
+                      color: Theme.of(context).colorScheme.error,
+                      textColor: Theme.of(context).colorScheme.onError,
+                      onPressed: () async {
+                        final wordService = GetIt.I.get<WordService>();
+                        await wordService.removeWordFromDictionary(widget.word);
+                        setState(() => _wordIsInDictinary = false);
+                      },
+                      child: const Text('Удалить из словоря'),
+                    )
+                  : MaterialButton(
+                      color: Theme.of(context).secondaryHeaderColor,
+                      onPressed: () async {
+                        final wordService = GetIt.I.get<WordService>();
+                        await wordService.addWordToDictionary(widget.word);
+                        setState(() => _wordIsInDictinary = true);
+                      },
+                      child: const Text('добавить в словарь'),
+                    ),
+            ],
+          ),
+          const SizedBox(height: 8.0),
+          Expanded(
+            child: FutureBuilder(
+              future: _getWordDefinitions(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: snapshot.data!
+                      .asMap()
+                      .entries
+                      .map(
+                        (def) => Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text('${def.key + 1}) ${def.value}'),
+                        ),
+                      )
+                      .toList(),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
