@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
-import 'package:kango/pages/user/dict_viewer.dart';
+import 'package:kango/data/repositories/prisma/dict.dart';
+import 'package:kango/data/repositories/prisma/text.dart';
+import 'package:kango/data/repositories/prisma/user.dart';
+import 'package:kango/data/repositories/prisma/word.dart';
+import 'package:kango/services/dict.dart';
 import 'package:provider/provider.dart';
 
 import 'package:kango/data/entities/user.dart';
-import 'package:kango/data/prisma/prisma_client.dart';
-import 'package:kango/data/repositories/text.dart';
-import 'package:kango/data/repositories/user.dart';
-import 'package:kango/data/repositories/word.dart';
-import 'package:kango/pages/mod/texts.dart';
-import 'package:kango/pages/mod/text_upload_page.dart';
-import 'package:kango/pages/user/text_viewer.dart';
-import 'package:kango/pages/user/texts.dart';
+import 'package:kango/data/repositories/prisma/prisma_client.dart';
 import 'package:kango/pages/admin/user_add.dart';
 import 'package:kango/pages/admin/users.dart';
+import 'package:kango/pages/auth.dart';
+import 'package:kango/pages/mod/texts.dart';
+import 'package:kango/pages/mod/text_upload_page.dart';
+import 'package:kango/pages/user/dict_viewer.dart';
+import 'package:kango/pages/user/text_viewer.dart';
+import 'package:kango/pages/user/texts.dart';
 import 'package:kango/services/auth.dart';
 import 'package:kango/services/text_provider.dart';
 import 'package:kango/services/user.dart';
 import 'package:kango/services/word.dart';
-import 'package:kango/pages/auth.dart';
 import 'package:kango/services/user_provider.dart';
 
 void main() async {
@@ -31,17 +33,20 @@ void main() async {
     ),
   );
 
-  final userRepo = UserRepository(prisma: prisma);
-  final textRepo = TextRepository(prisma: prisma);
-  final wordRepo = WordRepository(prisma: prisma);
+  final userRepo = PrismaUserRepository(prisma: prisma);
+  final textRepo = PrismaTextRepository(prisma: prisma);
+  final wordRepo = PrismaWordRepository(prisma: prisma);
+  final dictRepo = PrismaDictionaryRepository(prisma: prisma);
 
   final authService = AuthService(userRepo);
   final userService = UserService(authService, userRepo);
-  final wordService = WordService(authService, wordRepo);
+  final wordService = WordService(wordRepo);
+  final dictService = DictService(authService, dictRepo);
 
   GetIt.I.registerSingleton<AuthService>(authService);
   GetIt.I.registerSingleton<UserService>(userService);
   GetIt.I.registerSingleton<WordService>(wordService);
+  GetIt.I.registerSingleton<DictService>(dictService);
 
   runApp(MultiProvider(
     providers: [
@@ -49,7 +54,7 @@ void main() async {
         create: (_) => UserProvider(),
       ),
       ChangeNotifierProvider(
-        create: (_) => TextsProvider(authService, textRepo),
+        create: (_) => TextsProvider(authService, textRepo, wordRepo),
       ),
     ],
     child: const App(),

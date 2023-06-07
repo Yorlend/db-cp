@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:kango/data/entities/text.dart' as entity;
 import 'package:kango/data/entities/user.dart';
+import 'package:kango/data/entities/word.dart';
 import 'package:kango/data/repositories/text.dart';
+import 'package:kango/data/repositories/word.dart';
 import 'package:kango/services/auth.dart';
+import 'package:kango/vendor/goo/goo.dart';
+import 'package:kango/vendor/jisho/jisho.dart';
 
 class TextsProvider extends ChangeNotifier {
   final TextRepository _textRepository;
+  final WordRepository _wordRepository;
   final AuthService _authService;
 
   List<entity.Text> _texts = [];
 
-  TextsProvider(this._authService, this._textRepository) {
+  TextsProvider(this._authService, this._textRepository, this._wordRepository) {
     _reloadTexts();
   }
 
@@ -27,6 +32,19 @@ class TextsProvider extends ChangeNotifier {
       final text = entity.Text(title: title, content: content);
       await _textRepository.insertText(text);
       await _reloadTexts();
+      final wordDescrs = await Goo.splitText(content);
+
+      for (final wordDescr in wordDescrs) {
+        final meanings = await Jisho.getWordDefinitions(wordDescr.word);
+
+        final word = Word(
+          word: wordDescr.word,
+          reading: wordDescr.reading,
+          meaning: meanings.join('\n'),
+        );
+
+        await _wordRepository.insertWord(word);
+      }
     }
   }
 

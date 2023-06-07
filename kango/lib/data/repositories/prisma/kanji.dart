@@ -1,5 +1,5 @@
 import 'package:kango/data/entities/kanji.dart';
-import 'package:kango/data/prisma/prisma_client.dart';
+import 'package:kango/data/repositories/prisma/prisma_client.dart';
 
 class KanjiRepository {
   final PrismaClient _prisma;

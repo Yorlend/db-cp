@@ -11,7 +11,9 @@ class KangoDrawer extends StatelessWidget {
     return Consumer<UserProvider>(
       builder: (context, value, child) {
         if (value.currentUser == null) {
-          throw Exception('User is not logged in');
+          return const Drawer(
+            child: Center(),
+          );
         } else {
           return Drawer(
             child: ListView(

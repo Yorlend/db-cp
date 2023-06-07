@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kango/data/entities/word.dart';
-import 'package:kango/services/word.dart';
+import 'package:kango/services/dict.dart';
 import 'package:kango/widgets/drawer.dart';
 
 class DictViewerPage extends StatefulWidget {
@@ -18,8 +18,8 @@ class DictViewerPageState extends State<DictViewerPage> {
   void initState() {
     super.initState();
 
-    final wordService = GetIt.I.get<WordService>();
-    wordService.getAllWords().then((wds) => setState(() => _words = wds));
+    final dictService = GetIt.I.get<DictService>();
+    dictService.getAllWords().then((wds) => setState(() => _words = wds));
   }
 
   @override
@@ -55,6 +55,15 @@ class DictViewerPageState extends State<DictViewerPage> {
         ],
       ),
       subtitle: Text(w.meaning),
+      trailing: IconButton(
+        icon: const Icon(Icons.delete),
+        color: Theme.of(context).colorScheme.error,
+        onPressed: () async {
+          final dictService = GetIt.I.get<DictService>();
+          await dictService.removeWordFromDictionary(w);
+          setState(() => _words.remove(w));
+        },
+      ),
     );
   }
 }

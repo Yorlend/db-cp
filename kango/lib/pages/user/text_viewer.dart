@@ -14,7 +14,7 @@ class TextViewerPage extends StatelessWidget {
       return Word(
         word: wd.word,
         reading: wd.reading,
-        meaning: '???',
+        meaning: '',
       );
     }).toList();
   }

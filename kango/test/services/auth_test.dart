@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:kango/data/prisma/prisma_client.dart';
-import 'package:kango/data/repositories/user.dart';
+import 'package:kango/data/repositories/prisma/prisma_client.dart';
+import 'package:kango/data/repositories/prisma/user.dart';
 import 'package:kango/services/auth.dart';
 import 'package:test/test.dart';
 
@@ -13,7 +13,7 @@ void main() async {
     ),
   );
 
-  final userRepo = UserRepository(
+  final userRepo = PrismaUserRepository(
     prisma: prisma,
   );
   final service = AuthService(userRepo);

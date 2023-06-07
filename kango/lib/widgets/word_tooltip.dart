@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:kango/data/entities/word.dart';
+import 'package:kango/services/dict.dart';
 import 'package:kango/services/word.dart';
 
 class WordTooltip extends StatefulWidget {
@@ -19,14 +20,14 @@ class WordTooltipState extends State<WordTooltip> {
   void initState() {
     super.initState();
     GetIt.I
-        .get<WordService>()
+        .get<DictService>()
         .hasWordInDictionary(widget.word)
         .then((value) => setState(() => _wordIsInDictinary = value));
   }
 
   Future<List<String>> _getWordDefinitions() async {
     final wordService = GetIt.I.get<WordService>();
-    return await wordService.getWordDefinitions(widget.word.word);
+    return await wordService.getWordDefinitions(widget.word);
   }
 
   @override
@@ -57,8 +58,8 @@ class WordTooltipState extends State<WordTooltip> {
                       color: Theme.of(context).colorScheme.error,
                       textColor: Theme.of(context).colorScheme.onError,
                       onPressed: () async {
-                        final wordService = GetIt.I.get<WordService>();
-                        await wordService.removeWordFromDictionary(widget.word);
+                        final dictService = GetIt.I.get<DictService>();
+                        await dictService.removeWordFromDictionary(widget.word);
                         setState(() => _wordIsInDictinary = false);
                       },
                       child: const Text('Удалить из словоря'),
@@ -66,8 +67,8 @@ class WordTooltipState extends State<WordTooltip> {
                   : MaterialButton(
                       color: Theme.of(context).secondaryHeaderColor,
                       onPressed: () async {
-                        final wordService = GetIt.I.get<WordService>();
-                        await wordService.addWordToDictionary(widget.word);
+                        final dictService = GetIt.I.get<DictService>();
+                        await dictService.addWordToDictionary(widget.word);
                         setState(() => _wordIsInDictinary = true);
                       },
                       child: const Text('добавить в словарь'),

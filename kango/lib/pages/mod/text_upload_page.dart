@@ -111,8 +111,8 @@ class TextUploadPageState extends State<TextUploadPage> {
                   padding: const EdgeInsets.all(16.0),
                   child: MaterialButton(
                     color: Theme.of(context).primaryColor,
-                    onPressed: () {
-                      provider.uploadText(
+                    onPressed: () async {
+                      await provider.uploadText(
                           _titleController.text, _textController.text);
                       Navigator.pop(context);
                     },
