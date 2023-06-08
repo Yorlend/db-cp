@@ -234,6 +234,10 @@ KanjiDAOWhereInput _$KanjiDAOWhereInputFromJson(Map<String, dynamic> json) =>
       meaning: json['meaning'] == null
           ? null
           : StringFilter.fromJson(json['meaning'] as Map<String, dynamic>),
+      words: json['words'] == null
+          ? null
+          : WordsDAOListRelationFilter.fromJson(
+              json['words'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KanjiDAOWhereInputToJson(KanjiDAOWhereInput instance) {
@@ -252,6 +256,7 @@ Map<String, dynamic> _$KanjiDAOWhereInputToJson(KanjiDAOWhereInput instance) {
   writeNotNull('onyoumi', instance.onyoumi?.toJson());
   writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
   writeNotNull('meaning', instance.meaning?.toJson());
+  writeNotNull('words', instance.words?.toJson());
   return val;
 }
 
@@ -262,6 +267,10 @@ KanjiDAOOrderByWithRelationInput _$KanjiDAOOrderByWithRelationInputFromJson(
       onyoumi: $enumDecodeNullable(_$SortOrderEnumMap, json['onyoumi']),
       kunyoumi: $enumDecodeNullable(_$SortOrderEnumMap, json['kunyoumi']),
       meaning: $enumDecodeNullable(_$SortOrderEnumMap, json['meaning']),
+      words: json['words'] == null
+          ? null
+          : WordsDAOOrderByRelationAggregateInput.fromJson(
+              json['words'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KanjiDAOOrderByWithRelationInputToJson(
@@ -278,6 +287,7 @@ Map<String, dynamic> _$KanjiDAOOrderByWithRelationInputToJson(
   writeNotNull('onyoumi', _$SortOrderEnumMap[instance.onyoumi]);
   writeNotNull('kunyoumi', _$SortOrderEnumMap[instance.kunyoumi]);
   writeNotNull('meaning', _$SortOrderEnumMap[instance.meaning]);
+  writeNotNull('words', instance.words?.toJson());
   return val;
 }
 
@@ -606,6 +616,10 @@ WordsDAOWhereInput _$WordsDAOWhereInputFromJson(Map<String, dynamic> json) =>
           ? null
           : DictionariesDAOListRelationFilter.fromJson(
               json['dicts'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOListRelationFilter.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOWhereInputToJson(WordsDAOWhereInput instance) {
@@ -624,6 +638,7 @@ Map<String, dynamic> _$WordsDAOWhereInputToJson(WordsDAOWhereInput instance) {
   writeNotNull('translation', instance.translation?.toJson());
   writeNotNull('reading', instance.reading?.toJson());
   writeNotNull('dicts', instance.dicts?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -637,6 +652,10 @@ WordsDAOOrderByWithRelationInput _$WordsDAOOrderByWithRelationInputFromJson(
           ? null
           : DictionariesDAOOrderByRelationAggregateInput.fromJson(
               json['dicts'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOOrderByRelationAggregateInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOOrderByWithRelationInputToJson(
@@ -653,6 +672,7 @@ Map<String, dynamic> _$WordsDAOOrderByWithRelationInputToJson(
   writeNotNull('translation', _$SortOrderEnumMap[instance.translation]);
   writeNotNull('reading', _$SortOrderEnumMap[instance.reading]);
   writeNotNull('dicts', instance.dicts?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -1204,16 +1224,29 @@ KanjiDAOCreateInput _$KanjiDAOCreateInputFromJson(Map<String, dynamic> json) =>
       onyoumi: json['onyoumi'] as String,
       kunyoumi: json['kunyoumi'] as String,
       meaning: json['meaning'] as String,
+      words: json['words'] == null
+          ? null
+          : WordsDAOCreateNestedManyWithoutKanjisInput.fromJson(
+              json['words'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$KanjiDAOCreateInputToJson(
-        KanjiDAOCreateInput instance) =>
-    <String, dynamic>{
-      'glyph': instance.glyph,
-      'onyoumi': instance.onyoumi,
-      'kunyoumi': instance.kunyoumi,
-      'meaning': instance.meaning,
-    };
+Map<String, dynamic> _$KanjiDAOCreateInputToJson(KanjiDAOCreateInput instance) {
+  final val = <String, dynamic>{
+    'glyph': instance.glyph,
+    'onyoumi': instance.onyoumi,
+    'kunyoumi': instance.kunyoumi,
+    'meaning': instance.meaning,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('words', instance.words?.toJson());
+  return val;
+}
 
 KanjiDAOUncheckedCreateInput _$KanjiDAOUncheckedCreateInputFromJson(
         Map<String, dynamic> json) =>
@@ -1222,16 +1255,30 @@ KanjiDAOUncheckedCreateInput _$KanjiDAOUncheckedCreateInputFromJson(
       onyoumi: json['onyoumi'] as String,
       kunyoumi: json['kunyoumi'] as String,
       meaning: json['meaning'] as String,
+      words: json['words'] == null
+          ? null
+          : WordsDAOUncheckedCreateNestedManyWithoutKanjisInput.fromJson(
+              json['words'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KanjiDAOUncheckedCreateInputToJson(
-        KanjiDAOUncheckedCreateInput instance) =>
-    <String, dynamic>{
-      'glyph': instance.glyph,
-      'onyoumi': instance.onyoumi,
-      'kunyoumi': instance.kunyoumi,
-      'meaning': instance.meaning,
-    };
+    KanjiDAOUncheckedCreateInput instance) {
+  final val = <String, dynamic>{
+    'glyph': instance.glyph,
+    'onyoumi': instance.onyoumi,
+    'kunyoumi': instance.kunyoumi,
+    'meaning': instance.meaning,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('words', instance.words?.toJson());
+  return val;
+}
 
 KanjiDAOUpdateInput _$KanjiDAOUpdateInputFromJson(Map<String, dynamic> json) =>
     KanjiDAOUpdateInput(
@@ -1251,6 +1298,10 @@ KanjiDAOUpdateInput _$KanjiDAOUpdateInputFromJson(Map<String, dynamic> json) =>
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['meaning'] as Map<String, dynamic>),
+      words: json['words'] == null
+          ? null
+          : WordsDAOUpdateManyWithoutKanjisNestedInput.fromJson(
+              json['words'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KanjiDAOUpdateInputToJson(KanjiDAOUpdateInput instance) {
@@ -1266,6 +1317,7 @@ Map<String, dynamic> _$KanjiDAOUpdateInputToJson(KanjiDAOUpdateInput instance) {
   writeNotNull('onyoumi', instance.onyoumi?.toJson());
   writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
   writeNotNull('meaning', instance.meaning?.toJson());
+  writeNotNull('words', instance.words?.toJson());
   return val;
 }
 
@@ -1288,6 +1340,10 @@ KanjiDAOUncheckedUpdateInput _$KanjiDAOUncheckedUpdateInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['meaning'] as Map<String, dynamic>),
+      words: json['words'] == null
+          ? null
+          : WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput.fromJson(
+              json['words'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$KanjiDAOUncheckedUpdateInputToJson(
@@ -1304,6 +1360,7 @@ Map<String, dynamic> _$KanjiDAOUncheckedUpdateInputToJson(
   writeNotNull('onyoumi', instance.onyoumi?.toJson());
   writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
   writeNotNull('meaning', instance.meaning?.toJson());
+  writeNotNull('words', instance.words?.toJson());
   return val;
 }
 
@@ -1632,6 +1689,10 @@ WordsDAOCreateInput _$WordsDAOCreateInputFromJson(Map<String, dynamic> json) =>
           ? null
           : DictionariesDAOCreateNestedManyWithoutWordsInput.fromJson(
               json['dicts'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOCreateNestedManyWithoutWordsInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOCreateInputToJson(WordsDAOCreateInput instance) {
@@ -1648,6 +1709,7 @@ Map<String, dynamic> _$WordsDAOCreateInputToJson(WordsDAOCreateInput instance) {
   }
 
   writeNotNull('dicts', instance.dicts?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -1661,6 +1723,10 @@ WordsDAOUncheckedCreateInput _$WordsDAOUncheckedCreateInputFromJson(
           ? null
           : DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput.fromJson(
               json['dicts'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOUncheckedCreateNestedManyWithoutWordsInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOUncheckedCreateInputToJson(
@@ -1678,6 +1744,7 @@ Map<String, dynamic> _$WordsDAOUncheckedCreateInputToJson(
   }
 
   writeNotNull('dicts', instance.dicts?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -1699,6 +1766,10 @@ WordsDAOUpdateInput _$WordsDAOUpdateInputFromJson(Map<String, dynamic> json) =>
           ? null
           : DictionariesDAOUpdateManyWithoutWordsNestedInput.fromJson(
               json['dicts'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOUpdateManyWithoutWordsNestedInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOUpdateInputToJson(WordsDAOUpdateInput instance) {
@@ -1714,6 +1785,7 @@ Map<String, dynamic> _$WordsDAOUpdateInputToJson(WordsDAOUpdateInput instance) {
   writeNotNull('translation', instance.translation?.toJson());
   writeNotNull('reading', instance.reading?.toJson());
   writeNotNull('dicts', instance.dicts?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -1736,6 +1808,10 @@ WordsDAOUncheckedUpdateInput _$WordsDAOUncheckedUpdateInputFromJson(
           ? null
           : DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput.fromJson(
               json['dicts'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOUncheckedUpdateInputToJson(
@@ -1752,6 +1828,7 @@ Map<String, dynamic> _$WordsDAOUncheckedUpdateInputToJson(
   writeNotNull('translation', instance.translation?.toJson());
   writeNotNull('reading', instance.reading?.toJson());
   writeNotNull('dicts', instance.dicts?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -2386,6 +2463,57 @@ Map<String, dynamic> _$EnumRoleWithAggregatesFilterToJson(
   return val;
 }
 
+WordsDAOListRelationFilter _$WordsDAOListRelationFilterFromJson(
+        Map<String, dynamic> json) =>
+    WordsDAOListRelationFilter(
+      every: json['every'] == null
+          ? null
+          : WordsDAOWhereInput.fromJson(json['every'] as Map<String, dynamic>),
+      some: json['some'] == null
+          ? null
+          : WordsDAOWhereInput.fromJson(json['some'] as Map<String, dynamic>),
+      none: json['none'] == null
+          ? null
+          : WordsDAOWhereInput.fromJson(json['none'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$WordsDAOListRelationFilterToJson(
+    WordsDAOListRelationFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('every', instance.every?.toJson());
+  writeNotNull('some', instance.some?.toJson());
+  writeNotNull('none', instance.none?.toJson());
+  return val;
+}
+
+WordsDAOOrderByRelationAggregateInput
+    _$WordsDAOOrderByRelationAggregateInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOOrderByRelationAggregateInput(
+          $count: $enumDecodeNullable(_$SortOrderEnumMap, json['_count']),
+        );
+
+Map<String, dynamic> _$WordsDAOOrderByRelationAggregateInputToJson(
+    WordsDAOOrderByRelationAggregateInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('_count', _$SortOrderEnumMap[instance.$count]);
+  return val;
+}
+
 KanjiDAOCountOrderByAggregateInput _$KanjiDAOCountOrderByAggregateInputFromJson(
         Map<String, dynamic> json) =>
     KanjiDAOCountOrderByAggregateInput(
@@ -2487,57 +2615,6 @@ Map<String, dynamic> _$UsersDAORelationFilterToJson(
 
   writeNotNull('is', instance.$is?.toJson());
   writeNotNull('isNot', instance.isNot?.toJson());
-  return val;
-}
-
-WordsDAOListRelationFilter _$WordsDAOListRelationFilterFromJson(
-        Map<String, dynamic> json) =>
-    WordsDAOListRelationFilter(
-      every: json['every'] == null
-          ? null
-          : WordsDAOWhereInput.fromJson(json['every'] as Map<String, dynamic>),
-      some: json['some'] == null
-          ? null
-          : WordsDAOWhereInput.fromJson(json['some'] as Map<String, dynamic>),
-      none: json['none'] == null
-          ? null
-          : WordsDAOWhereInput.fromJson(json['none'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$WordsDAOListRelationFilterToJson(
-    WordsDAOListRelationFilter instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('every', instance.every?.toJson());
-  writeNotNull('some', instance.some?.toJson());
-  writeNotNull('none', instance.none?.toJson());
-  return val;
-}
-
-WordsDAOOrderByRelationAggregateInput
-    _$WordsDAOOrderByRelationAggregateInputFromJson(
-            Map<String, dynamic> json) =>
-        WordsDAOOrderByRelationAggregateInput(
-          $count: $enumDecodeNullable(_$SortOrderEnumMap, json['_count']),
-        );
-
-Map<String, dynamic> _$WordsDAOOrderByRelationAggregateInputToJson(
-    WordsDAOOrderByRelationAggregateInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('_count', _$SortOrderEnumMap[instance.$count]);
   return val;
 }
 
@@ -2649,6 +2726,36 @@ Map<String, dynamic> _$DictionariesDAOListRelationFilterToJson(
   return val;
 }
 
+KanjiDAOListRelationFilter _$KanjiDAOListRelationFilterFromJson(
+        Map<String, dynamic> json) =>
+    KanjiDAOListRelationFilter(
+      every: json['every'] == null
+          ? null
+          : KanjiDAOWhereInput.fromJson(json['every'] as Map<String, dynamic>),
+      some: json['some'] == null
+          ? null
+          : KanjiDAOWhereInput.fromJson(json['some'] as Map<String, dynamic>),
+      none: json['none'] == null
+          ? null
+          : KanjiDAOWhereInput.fromJson(json['none'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$KanjiDAOListRelationFilterToJson(
+    KanjiDAOListRelationFilter instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('every', instance.every?.toJson());
+  writeNotNull('some', instance.some?.toJson());
+  writeNotNull('none', instance.none?.toJson());
+  return val;
+}
+
 DictionariesDAOOrderByRelationAggregateInput
     _$DictionariesDAOOrderByRelationAggregateInputFromJson(
             Map<String, dynamic> json) =>
@@ -2658,6 +2765,27 @@ DictionariesDAOOrderByRelationAggregateInput
 
 Map<String, dynamic> _$DictionariesDAOOrderByRelationAggregateInputToJson(
     DictionariesDAOOrderByRelationAggregateInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('_count', _$SortOrderEnumMap[instance.$count]);
+  return val;
+}
+
+KanjiDAOOrderByRelationAggregateInput
+    _$KanjiDAOOrderByRelationAggregateInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOOrderByRelationAggregateInput(
+          $count: $enumDecodeNullable(_$SortOrderEnumMap, json['_count']),
+        );
+
+Map<String, dynamic> _$KanjiDAOOrderByRelationAggregateInputToJson(
+    KanjiDAOOrderByRelationAggregateInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -3251,6 +3379,186 @@ Map<String, dynamic>
   return val;
 }
 
+WordsDAOCreateNestedManyWithoutKanjisInput
+    _$WordsDAOCreateNestedManyWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOCreateNestedManyWithoutKanjisInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              WordsDAOCreateWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => WordsDAOCreateOrConnectWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic> _$WordsDAOCreateNestedManyWithoutKanjisInputToJson(
+    WordsDAOCreateNestedManyWithoutKanjisInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+WordsDAOUncheckedCreateNestedManyWithoutKanjisInput
+    _$WordsDAOUncheckedCreateNestedManyWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUncheckedCreateNestedManyWithoutKanjisInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              WordsDAOCreateWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => WordsDAOCreateOrConnectWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic>
+    _$WordsDAOUncheckedCreateNestedManyWithoutKanjisInputToJson(
+        WordsDAOUncheckedCreateNestedManyWithoutKanjisInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+WordsDAOUpdateManyWithoutKanjisNestedInput
+    _$WordsDAOUpdateManyWithoutKanjisNestedInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUpdateManyWithoutKanjisNestedInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              WordsDAOCreateWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => WordsDAOCreateOrConnectWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          upsert: (json['upsert'] as List<dynamic>?)?.map((e) =>
+              WordsDAOUpsertWithWhereUniqueWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          set: (json['set'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          disconnect: (json['disconnect'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          delete: (json['delete'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          update: (json['update'] as List<dynamic>?)?.map((e) =>
+              WordsDAOUpdateWithWhereUniqueWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          updateMany: (json['updateMany'] as List<dynamic>?)?.map((e) =>
+              WordsDAOUpdateManyWithWhereWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          deleteMany: (json['deleteMany'] as List<dynamic>?)?.map((e) =>
+              WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic> _$WordsDAOUpdateManyWithoutKanjisNestedInputToJson(
+    WordsDAOUpdateManyWithoutKanjisNestedInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('upsert', instance.upsert?.map((e) => e.toJson()).toList());
+  writeNotNull('set', instance.set?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'disconnect', instance.disconnect?.map((e) => e.toJson()).toList());
+  writeNotNull('delete', instance.delete?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  writeNotNull('update', instance.update?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'updateMany', instance.updateMany?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'deleteMany', instance.deleteMany?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput
+    _$WordsDAOUncheckedUpdateManyWithoutKanjisNestedInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              WordsDAOCreateWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => WordsDAOCreateOrConnectWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          upsert: (json['upsert'] as List<dynamic>?)?.map((e) =>
+              WordsDAOUpsertWithWhereUniqueWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          set: (json['set'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          disconnect: (json['disconnect'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          delete: (json['delete'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              WordsDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          update: (json['update'] as List<dynamic>?)?.map((e) =>
+              WordsDAOUpdateWithWhereUniqueWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          updateMany: (json['updateMany'] as List<dynamic>?)?.map((e) =>
+              WordsDAOUpdateManyWithWhereWithoutKanjisInput.fromJson(
+                  e as Map<String, dynamic>)),
+          deleteMany: (json['deleteMany'] as List<dynamic>?)?.map((e) =>
+              WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic>
+    _$WordsDAOUncheckedUpdateManyWithoutKanjisNestedInputToJson(
+        WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('upsert', instance.upsert?.map((e) => e.toJson()).toList());
+  writeNotNull('set', instance.set?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'disconnect', instance.disconnect?.map((e) => e.toJson()).toList());
+  writeNotNull('delete', instance.delete?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  writeNotNull('update', instance.update?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'updateMany', instance.updateMany?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'deleteMany', instance.deleteMany?.map((e) => e.toJson()).toList());
+  return val;
+}
+
 UsersDAOCreateNestedOneWithoutDictionaryInput
     _$UsersDAOCreateNestedOneWithoutDictionaryInputFromJson(
             Map<String, dynamic> json) =>
@@ -3540,6 +3848,37 @@ Map<String, dynamic> _$DictionariesDAOCreateNestedManyWithoutWordsInputToJson(
   return val;
 }
 
+KanjiDAOCreateNestedManyWithoutWordsInput
+    _$KanjiDAOCreateNestedManyWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOCreateNestedManyWithoutWordsInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOCreateWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => KanjiDAOCreateOrConnectWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic> _$KanjiDAOCreateNestedManyWithoutWordsInputToJson(
+    KanjiDAOCreateNestedManyWithoutWordsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  return val;
+}
+
 DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput
     _$DictionariesDAOUncheckedCreateNestedManyWithoutWordsInputFromJson(
             Map<String, dynamic> json) =>
@@ -3558,6 +3897,37 @@ DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput
 Map<String, dynamic>
     _$DictionariesDAOUncheckedCreateNestedManyWithoutWordsInputToJson(
         DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+KanjiDAOUncheckedCreateNestedManyWithoutWordsInput
+    _$KanjiDAOUncheckedCreateNestedManyWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUncheckedCreateNestedManyWithoutWordsInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOCreateWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => KanjiDAOCreateOrConnectWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic> _$KanjiDAOUncheckedCreateNestedManyWithoutWordsInputToJson(
+    KanjiDAOUncheckedCreateNestedManyWithoutWordsInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -3636,6 +4006,64 @@ Map<String, dynamic> _$DictionariesDAOUpdateManyWithoutWordsNestedInputToJson(
   return val;
 }
 
+KanjiDAOUpdateManyWithoutWordsNestedInput
+    _$KanjiDAOUpdateManyWithoutWordsNestedInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUpdateManyWithoutWordsNestedInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOCreateWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => KanjiDAOCreateOrConnectWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          upsert: (json['upsert'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOUpsertWithWhereUniqueWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          set: (json['set'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          disconnect: (json['disconnect'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          delete: (json['delete'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          update: (json['update'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOUpdateWithWhereUniqueWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          updateMany: (json['updateMany'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOUpdateManyWithWhereWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          deleteMany: (json['deleteMany'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic> _$KanjiDAOUpdateManyWithoutWordsNestedInputToJson(
+    KanjiDAOUpdateManyWithoutWordsNestedInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('upsert', instance.upsert?.map((e) => e.toJson()).toList());
+  writeNotNull('set', instance.set?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'disconnect', instance.disconnect?.map((e) => e.toJson()).toList());
+  writeNotNull('delete', instance.delete?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  writeNotNull('update', instance.update?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'updateMany', instance.updateMany?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'deleteMany', instance.deleteMany?.map((e) => e.toJson()).toList());
+  return val;
+}
+
 DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput
     _$DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInputFromJson(
             Map<String, dynamic> json) =>
@@ -3675,6 +4103,64 @@ DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput
 Map<String, dynamic>
     _$DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInputToJson(
         DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('create', instance.create?.map((e) => e.toJson()).toList());
+  writeNotNull('connectOrCreate',
+      instance.connectOrCreate?.map((e) => e.toJson()).toList());
+  writeNotNull('upsert', instance.upsert?.map((e) => e.toJson()).toList());
+  writeNotNull('set', instance.set?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'disconnect', instance.disconnect?.map((e) => e.toJson()).toList());
+  writeNotNull('delete', instance.delete?.map((e) => e.toJson()).toList());
+  writeNotNull('connect', instance.connect?.map((e) => e.toJson()).toList());
+  writeNotNull('update', instance.update?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'updateMany', instance.updateMany?.map((e) => e.toJson()).toList());
+  writeNotNull(
+      'deleteMany', instance.deleteMany?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput
+    _$KanjiDAOUncheckedUpdateManyWithoutWordsNestedInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput(
+          create: (json['create'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOCreateWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          connectOrCreate: (json['connectOrCreate'] as List<dynamic>?)?.map(
+              (e) => KanjiDAOCreateOrConnectWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          upsert: (json['upsert'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOUpsertWithWhereUniqueWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          set: (json['set'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          disconnect: (json['disconnect'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          delete: (json['delete'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          connect: (json['connect'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOWhereUniqueInput.fromJson(e as Map<String, dynamic>)),
+          update: (json['update'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOUpdateWithWhereUniqueWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          updateMany: (json['updateMany'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOUpdateManyWithWhereWithoutWordsInput.fromJson(
+                  e as Map<String, dynamic>)),
+          deleteMany: (json['deleteMany'] as List<dynamic>?)?.map((e) =>
+              KanjiDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+        );
+
+Map<String, dynamic> _$KanjiDAOUncheckedUpdateManyWithoutWordsNestedInputToJson(
+    KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -4392,6 +4878,177 @@ Map<String, dynamic> _$TextsDAOScalarWhereInputToJson(
   return val;
 }
 
+WordsDAOCreateWithoutKanjisInput _$WordsDAOCreateWithoutKanjisInputFromJson(
+        Map<String, dynamic> json) =>
+    WordsDAOCreateWithoutKanjisInput(
+      word: json['word'] as String,
+      translation: json['translation'] as String,
+      reading: json['reading'] as String,
+      dicts: json['dicts'] == null
+          ? null
+          : DictionariesDAOCreateNestedManyWithoutWordsInput.fromJson(
+              json['dicts'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$WordsDAOCreateWithoutKanjisInputToJson(
+    WordsDAOCreateWithoutKanjisInput instance) {
+  final val = <String, dynamic>{
+    'word': instance.word,
+    'translation': instance.translation,
+    'reading': instance.reading,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('dicts', instance.dicts?.toJson());
+  return val;
+}
+
+WordsDAOUncheckedCreateWithoutKanjisInput
+    _$WordsDAOUncheckedCreateWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUncheckedCreateWithoutKanjisInput(
+          word: json['word'] as String,
+          translation: json['translation'] as String,
+          reading: json['reading'] as String,
+          dicts: json['dicts'] == null
+              ? null
+              : DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput
+                  .fromJson(json['dicts'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$WordsDAOUncheckedCreateWithoutKanjisInputToJson(
+    WordsDAOUncheckedCreateWithoutKanjisInput instance) {
+  final val = <String, dynamic>{
+    'word': instance.word,
+    'translation': instance.translation,
+    'reading': instance.reading,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('dicts', instance.dicts?.toJson());
+  return val;
+}
+
+WordsDAOCreateOrConnectWithoutKanjisInput
+    _$WordsDAOCreateOrConnectWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOCreateOrConnectWithoutKanjisInput(
+          where: WordsDAOWhereUniqueInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          create: WordsDAOCreateWithoutKanjisInput.fromJson(
+              json['create'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$WordsDAOCreateOrConnectWithoutKanjisInputToJson(
+        WordsDAOCreateOrConnectWithoutKanjisInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'create': instance.create.toJson(),
+    };
+
+WordsDAOUpsertWithWhereUniqueWithoutKanjisInput
+    _$WordsDAOUpsertWithWhereUniqueWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUpsertWithWhereUniqueWithoutKanjisInput(
+          where: WordsDAOWhereUniqueInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          update: WordsDAOUpdateWithoutKanjisInput.fromJson(
+              json['update'] as Map<String, dynamic>),
+          create: WordsDAOCreateWithoutKanjisInput.fromJson(
+              json['create'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$WordsDAOUpsertWithWhereUniqueWithoutKanjisInputToJson(
+        WordsDAOUpsertWithWhereUniqueWithoutKanjisInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'update': instance.update.toJson(),
+      'create': instance.create.toJson(),
+    };
+
+WordsDAOUpdateWithWhereUniqueWithoutKanjisInput
+    _$WordsDAOUpdateWithWhereUniqueWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUpdateWithWhereUniqueWithoutKanjisInput(
+          where: WordsDAOWhereUniqueInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          data: WordsDAOUpdateWithoutKanjisInput.fromJson(
+              json['data'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$WordsDAOUpdateWithWhereUniqueWithoutKanjisInputToJson(
+        WordsDAOUpdateWithWhereUniqueWithoutKanjisInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'data': instance.data.toJson(),
+    };
+
+WordsDAOUpdateManyWithWhereWithoutKanjisInput
+    _$WordsDAOUpdateManyWithWhereWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUpdateManyWithWhereWithoutKanjisInput(
+          where: WordsDAOScalarWhereInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          data: WordsDAOUpdateManyMutationInput.fromJson(
+              json['data'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$WordsDAOUpdateManyWithWhereWithoutKanjisInputToJson(
+        WordsDAOUpdateManyWithWhereWithoutKanjisInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'data': instance.data.toJson(),
+    };
+
+WordsDAOScalarWhereInput _$WordsDAOScalarWhereInputFromJson(
+        Map<String, dynamic> json) =>
+    WordsDAOScalarWhereInput(
+      AND: (json['AND'] as List<dynamic>?)?.map(
+          (e) => WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+      OR: (json['OR'] as List<dynamic>?)?.map(
+          (e) => WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+      NOT: (json['NOT'] as List<dynamic>?)?.map(
+          (e) => WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+      word: json['word'] == null
+          ? null
+          : StringFilter.fromJson(json['word'] as Map<String, dynamic>),
+      translation: json['translation'] == null
+          ? null
+          : StringFilter.fromJson(json['translation'] as Map<String, dynamic>),
+      reading: json['reading'] == null
+          ? null
+          : StringFilter.fromJson(json['reading'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$WordsDAOScalarWhereInputToJson(
+    WordsDAOScalarWhereInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('AND', instance.AND?.map((e) => e.toJson()).toList());
+  writeNotNull('OR', instance.OR?.map((e) => e.toJson()).toList());
+  writeNotNull('NOT', instance.NOT?.map((e) => e.toJson()).toList());
+  writeNotNull('word', instance.word?.toJson());
+  writeNotNull('translation', instance.translation?.toJson());
+  writeNotNull('reading', instance.reading?.toJson());
+  return val;
+}
+
 UsersDAOCreateWithoutDictionaryInput
     _$UsersDAOCreateWithoutDictionaryInputFromJson(Map<String, dynamic> json) =>
         UsersDAOCreateWithoutDictionaryInput(
@@ -4478,15 +5135,29 @@ WordsDAOCreateWithoutDictsInput _$WordsDAOCreateWithoutDictsInputFromJson(
       word: json['word'] as String,
       translation: json['translation'] as String,
       reading: json['reading'] as String,
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOCreateNestedManyWithoutWordsInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$WordsDAOCreateWithoutDictsInputToJson(
-        WordsDAOCreateWithoutDictsInput instance) =>
-    <String, dynamic>{
-      'word': instance.word,
-      'translation': instance.translation,
-      'reading': instance.reading,
-    };
+    WordsDAOCreateWithoutDictsInput instance) {
+  final val = <String, dynamic>{
+    'word': instance.word,
+    'translation': instance.translation,
+    'reading': instance.reading,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('kanjis', instance.kanjis?.toJson());
+  return val;
+}
 
 WordsDAOUncheckedCreateWithoutDictsInput
     _$WordsDAOUncheckedCreateWithoutDictsInputFromJson(
@@ -4495,15 +5166,29 @@ WordsDAOUncheckedCreateWithoutDictsInput
           word: json['word'] as String,
           translation: json['translation'] as String,
           reading: json['reading'] as String,
+          kanjis: json['kanjis'] == null
+              ? null
+              : KanjiDAOUncheckedCreateNestedManyWithoutWordsInput.fromJson(
+                  json['kanjis'] as Map<String, dynamic>),
         );
 
 Map<String, dynamic> _$WordsDAOUncheckedCreateWithoutDictsInputToJson(
-        WordsDAOUncheckedCreateWithoutDictsInput instance) =>
-    <String, dynamic>{
-      'word': instance.word,
-      'translation': instance.translation,
-      'reading': instance.reading,
-    };
+    WordsDAOUncheckedCreateWithoutDictsInput instance) {
+  final val = <String, dynamic>{
+    'word': instance.word,
+    'translation': instance.translation,
+    'reading': instance.reading,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('kanjis', instance.kanjis?.toJson());
+  return val;
+}
 
 WordsDAOCreateOrConnectWithoutDictsInput
     _$WordsDAOCreateOrConnectWithoutDictsInputFromJson(
@@ -4673,45 +5358,6 @@ Map<String, dynamic> _$WordsDAOUpdateManyWithWhereWithoutDictsInputToJson(
       'data': instance.data.toJson(),
     };
 
-WordsDAOScalarWhereInput _$WordsDAOScalarWhereInputFromJson(
-        Map<String, dynamic> json) =>
-    WordsDAOScalarWhereInput(
-      AND: (json['AND'] as List<dynamic>?)?.map(
-          (e) => WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
-      OR: (json['OR'] as List<dynamic>?)?.map(
-          (e) => WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
-      NOT: (json['NOT'] as List<dynamic>?)?.map(
-          (e) => WordsDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
-      word: json['word'] == null
-          ? null
-          : StringFilter.fromJson(json['word'] as Map<String, dynamic>),
-      translation: json['translation'] == null
-          ? null
-          : StringFilter.fromJson(json['translation'] as Map<String, dynamic>),
-      reading: json['reading'] == null
-          ? null
-          : StringFilter.fromJson(json['reading'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$WordsDAOScalarWhereInputToJson(
-    WordsDAOScalarWhereInput instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('AND', instance.AND?.map((e) => e.toJson()).toList());
-  writeNotNull('OR', instance.OR?.map((e) => e.toJson()).toList());
-  writeNotNull('NOT', instance.NOT?.map((e) => e.toJson()).toList());
-  writeNotNull('word', instance.word?.toJson());
-  writeNotNull('translation', instance.translation?.toJson());
-  writeNotNull('reading', instance.reading?.toJson());
-  return val;
-}
-
 DictionariesDAOCreateWithoutWordsInput
     _$DictionariesDAOCreateWithoutWordsInputFromJson(
             Map<String, dynamic> json) =>
@@ -4775,6 +5421,60 @@ DictionariesDAOCreateOrConnectWithoutWordsInput
 
 Map<String, dynamic> _$DictionariesDAOCreateOrConnectWithoutWordsInputToJson(
         DictionariesDAOCreateOrConnectWithoutWordsInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'create': instance.create.toJson(),
+    };
+
+KanjiDAOCreateWithoutWordsInput _$KanjiDAOCreateWithoutWordsInputFromJson(
+        Map<String, dynamic> json) =>
+    KanjiDAOCreateWithoutWordsInput(
+      glyph: json['glyph'] as String,
+      onyoumi: json['onyoumi'] as String,
+      kunyoumi: json['kunyoumi'] as String,
+      meaning: json['meaning'] as String,
+    );
+
+Map<String, dynamic> _$KanjiDAOCreateWithoutWordsInputToJson(
+        KanjiDAOCreateWithoutWordsInput instance) =>
+    <String, dynamic>{
+      'glyph': instance.glyph,
+      'onyoumi': instance.onyoumi,
+      'kunyoumi': instance.kunyoumi,
+      'meaning': instance.meaning,
+    };
+
+KanjiDAOUncheckedCreateWithoutWordsInput
+    _$KanjiDAOUncheckedCreateWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUncheckedCreateWithoutWordsInput(
+          glyph: json['glyph'] as String,
+          onyoumi: json['onyoumi'] as String,
+          kunyoumi: json['kunyoumi'] as String,
+          meaning: json['meaning'] as String,
+        );
+
+Map<String, dynamic> _$KanjiDAOUncheckedCreateWithoutWordsInputToJson(
+        KanjiDAOUncheckedCreateWithoutWordsInput instance) =>
+    <String, dynamic>{
+      'glyph': instance.glyph,
+      'onyoumi': instance.onyoumi,
+      'kunyoumi': instance.kunyoumi,
+      'meaning': instance.meaning,
+    };
+
+KanjiDAOCreateOrConnectWithoutWordsInput
+    _$KanjiDAOCreateOrConnectWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOCreateOrConnectWithoutWordsInput(
+          where: KanjiDAOWhereUniqueInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          create: KanjiDAOCreateWithoutWordsInput.fromJson(
+              json['create'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$KanjiDAOCreateOrConnectWithoutWordsInputToJson(
+        KanjiDAOCreateOrConnectWithoutWordsInput instance) =>
     <String, dynamic>{
       'where': instance.where.toJson(),
       'create': instance.create.toJson(),
@@ -4873,6 +5573,103 @@ Map<String, dynamic> _$DictionariesDAOScalarWhereInputToJson(
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('title', instance.title?.toJson());
   writeNotNull('owner_id', instance.ownerId?.toJson());
+  return val;
+}
+
+KanjiDAOUpsertWithWhereUniqueWithoutWordsInput
+    _$KanjiDAOUpsertWithWhereUniqueWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUpsertWithWhereUniqueWithoutWordsInput(
+          where: KanjiDAOWhereUniqueInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          update: KanjiDAOUpdateWithoutWordsInput.fromJson(
+              json['update'] as Map<String, dynamic>),
+          create: KanjiDAOCreateWithoutWordsInput.fromJson(
+              json['create'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$KanjiDAOUpsertWithWhereUniqueWithoutWordsInputToJson(
+        KanjiDAOUpsertWithWhereUniqueWithoutWordsInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'update': instance.update.toJson(),
+      'create': instance.create.toJson(),
+    };
+
+KanjiDAOUpdateWithWhereUniqueWithoutWordsInput
+    _$KanjiDAOUpdateWithWhereUniqueWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUpdateWithWhereUniqueWithoutWordsInput(
+          where: KanjiDAOWhereUniqueInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          data: KanjiDAOUpdateWithoutWordsInput.fromJson(
+              json['data'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$KanjiDAOUpdateWithWhereUniqueWithoutWordsInputToJson(
+        KanjiDAOUpdateWithWhereUniqueWithoutWordsInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'data': instance.data.toJson(),
+    };
+
+KanjiDAOUpdateManyWithWhereWithoutWordsInput
+    _$KanjiDAOUpdateManyWithWhereWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUpdateManyWithWhereWithoutWordsInput(
+          where: KanjiDAOScalarWhereInput.fromJson(
+              json['where'] as Map<String, dynamic>),
+          data: KanjiDAOUpdateManyMutationInput.fromJson(
+              json['data'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$KanjiDAOUpdateManyWithWhereWithoutWordsInputToJson(
+        KanjiDAOUpdateManyWithWhereWithoutWordsInput instance) =>
+    <String, dynamic>{
+      'where': instance.where.toJson(),
+      'data': instance.data.toJson(),
+    };
+
+KanjiDAOScalarWhereInput _$KanjiDAOScalarWhereInputFromJson(
+        Map<String, dynamic> json) =>
+    KanjiDAOScalarWhereInput(
+      AND: (json['AND'] as List<dynamic>?)?.map(
+          (e) => KanjiDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+      OR: (json['OR'] as List<dynamic>?)?.map(
+          (e) => KanjiDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+      NOT: (json['NOT'] as List<dynamic>?)?.map(
+          (e) => KanjiDAOScalarWhereInput.fromJson(e as Map<String, dynamic>)),
+      glyph: json['glyph'] == null
+          ? null
+          : StringFilter.fromJson(json['glyph'] as Map<String, dynamic>),
+      onyoumi: json['onyoumi'] == null
+          ? null
+          : StringFilter.fromJson(json['onyoumi'] as Map<String, dynamic>),
+      kunyoumi: json['kunyoumi'] == null
+          ? null
+          : StringFilter.fromJson(json['kunyoumi'] as Map<String, dynamic>),
+      meaning: json['meaning'] == null
+          ? null
+          : StringFilter.fromJson(json['meaning'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$KanjiDAOScalarWhereInputToJson(
+    KanjiDAOScalarWhereInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('AND', instance.AND?.map((e) => e.toJson()).toList());
+  writeNotNull('OR', instance.OR?.map((e) => e.toJson()).toList());
+  writeNotNull('NOT', instance.NOT?.map((e) => e.toJson()).toList());
+  writeNotNull('glyph', instance.glyph?.toJson());
+  writeNotNull('onyoumi', instance.onyoumi?.toJson());
+  writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
+  writeNotNull('meaning', instance.meaning?.toJson());
   return val;
 }
 
@@ -5154,9 +5951,9 @@ Map<String, dynamic> _$TextsDAOUncheckedUpdateManyWithoutTextsInputToJson(
   return val;
 }
 
-WordsDAOUpdateWithoutDictsInput _$WordsDAOUpdateWithoutDictsInputFromJson(
+WordsDAOUpdateWithoutKanjisInput _$WordsDAOUpdateWithoutKanjisInputFromJson(
         Map<String, dynamic> json) =>
-    WordsDAOUpdateWithoutDictsInput(
+    WordsDAOUpdateWithoutKanjisInput(
       word: json['word'] == null
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
@@ -5169,10 +5966,14 @@ WordsDAOUpdateWithoutDictsInput _$WordsDAOUpdateWithoutDictsInputFromJson(
           ? null
           : StringFieldUpdateOperationsInput.fromJson(
               json['reading'] as Map<String, dynamic>),
+      dicts: json['dicts'] == null
+          ? null
+          : DictionariesDAOUpdateManyWithoutWordsNestedInput.fromJson(
+              json['dicts'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$WordsDAOUpdateWithoutDictsInputToJson(
-    WordsDAOUpdateWithoutDictsInput instance) {
+Map<String, dynamic> _$WordsDAOUpdateWithoutKanjisInputToJson(
+    WordsDAOUpdateWithoutKanjisInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -5184,13 +5985,14 @@ Map<String, dynamic> _$WordsDAOUpdateWithoutDictsInputToJson(
   writeNotNull('word', instance.word?.toJson());
   writeNotNull('translation', instance.translation?.toJson());
   writeNotNull('reading', instance.reading?.toJson());
+  writeNotNull('dicts', instance.dicts?.toJson());
   return val;
 }
 
-WordsDAOUncheckedUpdateWithoutDictsInput
-    _$WordsDAOUncheckedUpdateWithoutDictsInputFromJson(
+WordsDAOUncheckedUpdateWithoutKanjisInput
+    _$WordsDAOUncheckedUpdateWithoutKanjisInputFromJson(
             Map<String, dynamic> json) =>
-        WordsDAOUncheckedUpdateWithoutDictsInput(
+        WordsDAOUncheckedUpdateWithoutKanjisInput(
           word: json['word'] == null
               ? null
               : StringFieldUpdateOperationsInput.fromJson(
@@ -5203,10 +6005,14 @@ WordsDAOUncheckedUpdateWithoutDictsInput
               ? null
               : StringFieldUpdateOperationsInput.fromJson(
                   json['reading'] as Map<String, dynamic>),
+          dicts: json['dicts'] == null
+              ? null
+              : DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput
+                  .fromJson(json['dicts'] as Map<String, dynamic>),
         );
 
-Map<String, dynamic> _$WordsDAOUncheckedUpdateWithoutDictsInputToJson(
-    WordsDAOUncheckedUpdateWithoutDictsInput instance) {
+Map<String, dynamic> _$WordsDAOUncheckedUpdateWithoutKanjisInputToJson(
+    WordsDAOUncheckedUpdateWithoutKanjisInput instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -5218,6 +6024,7 @@ Map<String, dynamic> _$WordsDAOUncheckedUpdateWithoutDictsInputToJson(
   writeNotNull('word', instance.word?.toJson());
   writeNotNull('translation', instance.translation?.toJson());
   writeNotNull('reading', instance.reading?.toJson());
+  writeNotNull('dicts', instance.dicts?.toJson());
   return val;
 }
 
@@ -5252,6 +6059,83 @@ Map<String, dynamic> _$WordsDAOUncheckedUpdateManyWithoutWordsInputToJson(
   writeNotNull('word', instance.word?.toJson());
   writeNotNull('translation', instance.translation?.toJson());
   writeNotNull('reading', instance.reading?.toJson());
+  return val;
+}
+
+WordsDAOUpdateWithoutDictsInput _$WordsDAOUpdateWithoutDictsInputFromJson(
+        Map<String, dynamic> json) =>
+    WordsDAOUpdateWithoutDictsInput(
+      word: json['word'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['word'] as Map<String, dynamic>),
+      translation: json['translation'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['translation'] as Map<String, dynamic>),
+      reading: json['reading'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['reading'] as Map<String, dynamic>),
+      kanjis: json['kanjis'] == null
+          ? null
+          : KanjiDAOUpdateManyWithoutWordsNestedInput.fromJson(
+              json['kanjis'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$WordsDAOUpdateWithoutDictsInputToJson(
+    WordsDAOUpdateWithoutDictsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('word', instance.word?.toJson());
+  writeNotNull('translation', instance.translation?.toJson());
+  writeNotNull('reading', instance.reading?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
+  return val;
+}
+
+WordsDAOUncheckedUpdateWithoutDictsInput
+    _$WordsDAOUncheckedUpdateWithoutDictsInputFromJson(
+            Map<String, dynamic> json) =>
+        WordsDAOUncheckedUpdateWithoutDictsInput(
+          word: json['word'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['word'] as Map<String, dynamic>),
+          translation: json['translation'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['translation'] as Map<String, dynamic>),
+          reading: json['reading'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['reading'] as Map<String, dynamic>),
+          kanjis: json['kanjis'] == null
+              ? null
+              : KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput.fromJson(
+                  json['kanjis'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$WordsDAOUncheckedUpdateWithoutDictsInputToJson(
+    WordsDAOUncheckedUpdateWithoutDictsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('word', instance.word?.toJson());
+  writeNotNull('translation', instance.translation?.toJson());
+  writeNotNull('reading', instance.reading?.toJson());
+  writeNotNull('kanjis', instance.kanjis?.toJson());
   return val;
 }
 
@@ -5355,6 +6239,122 @@ Map<String, dynamic>
   writeNotNull('id', instance.id?.toJson());
   writeNotNull('title', instance.title?.toJson());
   writeNotNull('owner_id', instance.ownerId?.toJson());
+  return val;
+}
+
+KanjiDAOUpdateWithoutWordsInput _$KanjiDAOUpdateWithoutWordsInputFromJson(
+        Map<String, dynamic> json) =>
+    KanjiDAOUpdateWithoutWordsInput(
+      glyph: json['glyph'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['glyph'] as Map<String, dynamic>),
+      onyoumi: json['onyoumi'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['onyoumi'] as Map<String, dynamic>),
+      kunyoumi: json['kunyoumi'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['kunyoumi'] as Map<String, dynamic>),
+      meaning: json['meaning'] == null
+          ? null
+          : StringFieldUpdateOperationsInput.fromJson(
+              json['meaning'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$KanjiDAOUpdateWithoutWordsInputToJson(
+    KanjiDAOUpdateWithoutWordsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('glyph', instance.glyph?.toJson());
+  writeNotNull('onyoumi', instance.onyoumi?.toJson());
+  writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
+  writeNotNull('meaning', instance.meaning?.toJson());
+  return val;
+}
+
+KanjiDAOUncheckedUpdateWithoutWordsInput
+    _$KanjiDAOUncheckedUpdateWithoutWordsInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUncheckedUpdateWithoutWordsInput(
+          glyph: json['glyph'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['glyph'] as Map<String, dynamic>),
+          onyoumi: json['onyoumi'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['onyoumi'] as Map<String, dynamic>),
+          kunyoumi: json['kunyoumi'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['kunyoumi'] as Map<String, dynamic>),
+          meaning: json['meaning'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['meaning'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$KanjiDAOUncheckedUpdateWithoutWordsInputToJson(
+    KanjiDAOUncheckedUpdateWithoutWordsInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('glyph', instance.glyph?.toJson());
+  writeNotNull('onyoumi', instance.onyoumi?.toJson());
+  writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
+  writeNotNull('meaning', instance.meaning?.toJson());
+  return val;
+}
+
+KanjiDAOUncheckedUpdateManyWithoutKanjisInput
+    _$KanjiDAOUncheckedUpdateManyWithoutKanjisInputFromJson(
+            Map<String, dynamic> json) =>
+        KanjiDAOUncheckedUpdateManyWithoutKanjisInput(
+          glyph: json['glyph'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['glyph'] as Map<String, dynamic>),
+          onyoumi: json['onyoumi'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['onyoumi'] as Map<String, dynamic>),
+          kunyoumi: json['kunyoumi'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['kunyoumi'] as Map<String, dynamic>),
+          meaning: json['meaning'] == null
+              ? null
+              : StringFieldUpdateOperationsInput.fromJson(
+                  json['meaning'] as Map<String, dynamic>),
+        );
+
+Map<String, dynamic> _$KanjiDAOUncheckedUpdateManyWithoutKanjisInputToJson(
+    KanjiDAOUncheckedUpdateManyWithoutKanjisInput instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('glyph', instance.glyph?.toJson());
+  writeNotNull('onyoumi', instance.onyoumi?.toJson());
+  writeNotNull('kunyoumi', instance.kunyoumi?.toJson());
+  writeNotNull('meaning', instance.meaning?.toJson());
   return val;
 }
 

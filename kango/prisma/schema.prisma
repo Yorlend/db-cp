@@ -28,6 +28,7 @@ model KanjiDAO {
   onyoumi  String
   kunyoumi String
   meaning  String
+  words    WordsDAO[]
 }
 
 model DictionariesDAO {
@@ -43,6 +44,7 @@ model WordsDAO {
   translation String
   reading     String
   dicts       DictionariesDAO[]
+  kanjis      KanjiDAO[]
 }
 
 model TextsDAO {

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.5.31)  31 MAY 2023 17:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.8)  8 JUN 2023 14:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1513,18 +1513,18 @@ LaTeX Font Warning: Font shape `T2A/cmr/bx/n' in size <16> not available
 ] [6] [7
 
 ] [8]
-<inc/img/er.pdf, id=204, 579.12357pt x 479.87279pt>
+<inc/img/er.pdf, id=204, 579.12357pt x 371.46779pt>
 File: inc/img/er.pdf Graphic file (type pdf)
 <use inc/img/er.pdf>
-Package pdftex.def Info: inc/img/er.pdf  used on input line 169.
-(pdftex.def)             Requested size: 483.69687pt x 400.81317pt.
+Package pdftex.def Info: inc/img/er.pdf  used on input line 173.
+(pdftex.def)             Requested size: 483.69687pt x 310.26802pt.
  [9
 
  <./inc/img/er.pdf>]
-<inc/img/cw-usecase.pdf, id=221, 431.69278pt x 428.5611pt>
+<inc/img/cw-usecase.pdf, id=222, 431.69278pt x 428.5611pt>
 File: inc/img/cw-usecase.pdf Graphic file (type pdf)
 <use inc/img/cw-usecase.pdf>
-Package pdftex.def Info: inc/img/cw-usecase.pdf  used on input line 195.
+Package pdftex.def Info: inc/img/cw-usecase.pdf  used on input line 199.
 (pdftex.def)             Requested size: 362.77264pt x 360.13927pt.
  [10 <./inc/img/cw-usecase.pdf>]) [11]
 \openout2 = `05-design.aux'.
@@ -1571,9 +1571,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13
 
- <./inc/img/02_A0.png (PNG copy)> <./inc/img/cw-user.pdf>] [14 <./inc/img/cw-mod.pdf> <./inc/img/cw-admin.pdf>]) [15
+ <./inc/img/02_A0.png (PNG copy)> <./inc/img/cw-user.pdf>] [14 <./inc/img/cw-mod.pdf> <./inc/img/cw-admin.pdf>]
+<inc/img/schema.png, id=297, 1181.41376pt x 665.48625pt>
+File: inc/img/schema.png Graphic file (type png)
+<use inc/img/schema.png>
+Package pdftex.def Info: inc/img/schema.png  used on input line 59.
+(pdftex.def)             Requested size: 483.69687pt x 272.46526pt.
+) [15
 
-]
+ <./inc/img/schema.png>]
 \openout2 = `06-implementation.aux'.
 
  (./06-implementation.tex
@@ -1655,24 +1661,24 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
 Package rerunfilecheck Info: File `coursework.out' has not changed.
-(rerunfilecheck)             Checksum: FB4BA49B907AE25B25495B010C04FD70;5381.
+(rerunfilecheck)             Checksum: AE955A57D299A3198134D43C92A79B03;5381.
 Package logreq Info: Writing requests to 'coursework.run.xml'.
 \openout1 = `coursework.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50488 strings out of 476025
- 1098681 string characters out of 5796532
- 2207082 words of memory out of 5000000
- 69831 multiletter control sequences out of 15000+600000
+ 50511 strings out of 476025
+ 1099193 string characters out of 5796533
+ 2207149 words of memory out of 5000000
+ 69852 multiletter control sequences out of 15000+600000
  536414 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 124i,19n,122p,1185b,3183s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 124i,19n,122p,1185b,3183s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on coursework.pdf (21 pages, 635520 bytes).
+Output written on coursework.pdf (21 pages, 682915 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 337 compressed objects within 4 object streams
- 81 named destinations out of 1000 (max. 500000)
- 39629 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 406 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 39634 words of extra memory for PDF output out of 42996 (max. 10000000)
 

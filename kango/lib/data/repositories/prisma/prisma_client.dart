@@ -272,6 +272,7 @@ class KanjiDAOWhereInput implements _i1.JsonSerializable {
     this.onyoumi,
     this.kunyoumi,
     this.meaning,
+    this.words,
   });
 
   factory KanjiDAOWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -291,6 +292,8 @@ class KanjiDAOWhereInput implements _i1.JsonSerializable {
 
   final StringFilter? meaning;
 
+  final WordsDAOListRelationFilter? words;
+
   @override
   Map<String, dynamic> toJson() => _$KanjiDAOWhereInputToJson(this);
 }
@@ -302,6 +305,7 @@ class KanjiDAOOrderByWithRelationInput implements _i1.JsonSerializable {
     this.onyoumi,
     this.kunyoumi,
     this.meaning,
+    this.words,
   });
 
   factory KanjiDAOOrderByWithRelationInput.fromJson(
@@ -315,6 +319,8 @@ class KanjiDAOOrderByWithRelationInput implements _i1.JsonSerializable {
   final SortOrder? kunyoumi;
 
   final SortOrder? meaning;
+
+  final WordsDAOOrderByRelationAggregateInput? words;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -575,6 +581,7 @@ class WordsDAOWhereInput implements _i1.JsonSerializable {
     this.translation,
     this.reading,
     this.dicts,
+    this.kanjis,
   });
 
   factory WordsDAOWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -594,6 +601,8 @@ class WordsDAOWhereInput implements _i1.JsonSerializable {
 
   final DictionariesDAOListRelationFilter? dicts;
 
+  final KanjiDAOListRelationFilter? kanjis;
+
   @override
   Map<String, dynamic> toJson() => _$WordsDAOWhereInputToJson(this);
 }
@@ -605,6 +614,7 @@ class WordsDAOOrderByWithRelationInput implements _i1.JsonSerializable {
     this.translation,
     this.reading,
     this.dicts,
+    this.kanjis,
   });
 
   factory WordsDAOOrderByWithRelationInput.fromJson(
@@ -618,6 +628,8 @@ class WordsDAOOrderByWithRelationInput implements _i1.JsonSerializable {
   final SortOrder? reading;
 
   final DictionariesDAOOrderByRelationAggregateInput? dicts;
+
+  final KanjiDAOOrderByRelationAggregateInput? kanjis;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -1052,6 +1064,7 @@ class KanjiDAOCreateInput implements _i1.JsonSerializable {
     required this.onyoumi,
     required this.kunyoumi,
     required this.meaning,
+    this.words,
   });
 
   factory KanjiDAOCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -1065,6 +1078,8 @@ class KanjiDAOCreateInput implements _i1.JsonSerializable {
 
   final String meaning;
 
+  final WordsDAOCreateNestedManyWithoutKanjisInput? words;
+
   @override
   Map<String, dynamic> toJson() => _$KanjiDAOCreateInputToJson(this);
 }
@@ -1076,6 +1091,7 @@ class KanjiDAOUncheckedCreateInput implements _i1.JsonSerializable {
     required this.onyoumi,
     required this.kunyoumi,
     required this.meaning,
+    this.words,
   });
 
   factory KanjiDAOUncheckedCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -1089,6 +1105,8 @@ class KanjiDAOUncheckedCreateInput implements _i1.JsonSerializable {
 
   final String meaning;
 
+  final WordsDAOUncheckedCreateNestedManyWithoutKanjisInput? words;
+
   @override
   Map<String, dynamic> toJson() => _$KanjiDAOUncheckedCreateInputToJson(this);
 }
@@ -1100,6 +1118,7 @@ class KanjiDAOUpdateInput implements _i1.JsonSerializable {
     this.onyoumi,
     this.kunyoumi,
     this.meaning,
+    this.words,
   });
 
   factory KanjiDAOUpdateInput.fromJson(Map<String, dynamic> json) =>
@@ -1113,6 +1132,8 @@ class KanjiDAOUpdateInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? meaning;
 
+  final WordsDAOUpdateManyWithoutKanjisNestedInput? words;
+
   @override
   Map<String, dynamic> toJson() => _$KanjiDAOUpdateInputToJson(this);
 }
@@ -1124,6 +1145,7 @@ class KanjiDAOUncheckedUpdateInput implements _i1.JsonSerializable {
     this.onyoumi,
     this.kunyoumi,
     this.meaning,
+    this.words,
   });
 
   factory KanjiDAOUncheckedUpdateInput.fromJson(Map<String, dynamic> json) =>
@@ -1136,6 +1158,8 @@ class KanjiDAOUncheckedUpdateInput implements _i1.JsonSerializable {
   final StringFieldUpdateOperationsInput? kunyoumi;
 
   final StringFieldUpdateOperationsInput? meaning;
+
+  final WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput? words;
 
   @override
   Map<String, dynamic> toJson() => _$KanjiDAOUncheckedUpdateInputToJson(this);
@@ -1391,6 +1415,7 @@ class WordsDAOCreateInput implements _i1.JsonSerializable {
     required this.translation,
     required this.reading,
     this.dicts,
+    this.kanjis,
   });
 
   factory WordsDAOCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -1404,6 +1429,8 @@ class WordsDAOCreateInput implements _i1.JsonSerializable {
 
   final DictionariesDAOCreateNestedManyWithoutWordsInput? dicts;
 
+  final KanjiDAOCreateNestedManyWithoutWordsInput? kanjis;
+
   @override
   Map<String, dynamic> toJson() => _$WordsDAOCreateInputToJson(this);
 }
@@ -1415,6 +1442,7 @@ class WordsDAOUncheckedCreateInput implements _i1.JsonSerializable {
     required this.translation,
     required this.reading,
     this.dicts,
+    this.kanjis,
   });
 
   factory WordsDAOUncheckedCreateInput.fromJson(Map<String, dynamic> json) =>
@@ -1428,6 +1456,8 @@ class WordsDAOUncheckedCreateInput implements _i1.JsonSerializable {
 
   final DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput? dicts;
 
+  final KanjiDAOUncheckedCreateNestedManyWithoutWordsInput? kanjis;
+
   @override
   Map<String, dynamic> toJson() => _$WordsDAOUncheckedCreateInputToJson(this);
 }
@@ -1439,6 +1469,7 @@ class WordsDAOUpdateInput implements _i1.JsonSerializable {
     this.translation,
     this.reading,
     this.dicts,
+    this.kanjis,
   });
 
   factory WordsDAOUpdateInput.fromJson(Map<String, dynamic> json) =>
@@ -1452,6 +1483,8 @@ class WordsDAOUpdateInput implements _i1.JsonSerializable {
 
   final DictionariesDAOUpdateManyWithoutWordsNestedInput? dicts;
 
+  final KanjiDAOUpdateManyWithoutWordsNestedInput? kanjis;
+
   @override
   Map<String, dynamic> toJson() => _$WordsDAOUpdateInputToJson(this);
 }
@@ -1463,6 +1496,7 @@ class WordsDAOUncheckedUpdateInput implements _i1.JsonSerializable {
     this.translation,
     this.reading,
     this.dicts,
+    this.kanjis,
   });
 
   factory WordsDAOUncheckedUpdateInput.fromJson(Map<String, dynamic> json) =>
@@ -1475,6 +1509,8 @@ class WordsDAOUncheckedUpdateInput implements _i1.JsonSerializable {
   final StringFieldUpdateOperationsInput? reading;
 
   final DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput? dicts;
+
+  final KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput? kanjis;
 
   @override
   Map<String, dynamic> toJson() => _$WordsDAOUncheckedUpdateInputToJson(this);
@@ -2018,6 +2054,43 @@ class EnumRoleWithAggregatesFilter implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
+class WordsDAOListRelationFilter implements _i1.JsonSerializable {
+  const WordsDAOListRelationFilter({
+    this.every,
+    this.some,
+    this.none,
+  });
+
+  factory WordsDAOListRelationFilter.fromJson(Map<String, dynamic> json) =>
+      _$WordsDAOListRelationFilterFromJson(json);
+
+  final WordsDAOWhereInput? every;
+
+  final WordsDAOWhereInput? some;
+
+  final WordsDAOWhereInput? none;
+
+  @override
+  Map<String, dynamic> toJson() => _$WordsDAOListRelationFilterToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOOrderByRelationAggregateInput implements _i1.JsonSerializable {
+  const WordsDAOOrderByRelationAggregateInput({this.$count});
+
+  factory WordsDAOOrderByRelationAggregateInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOOrderByRelationAggregateInputFromJson(json);
+
+  @JsonKey(name: r'_count')
+  final SortOrder? $count;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOOrderByRelationAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class KanjiDAOCountOrderByAggregateInput implements _i1.JsonSerializable {
   const KanjiDAOCountOrderByAggregateInput({
     this.glyph,
@@ -2112,43 +2185,6 @@ class UsersDAORelationFilter implements _i1.JsonSerializable {
 
   @override
   Map<String, dynamic> toJson() => _$UsersDAORelationFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class WordsDAOListRelationFilter implements _i1.JsonSerializable {
-  const WordsDAOListRelationFilter({
-    this.every,
-    this.some,
-    this.none,
-  });
-
-  factory WordsDAOListRelationFilter.fromJson(Map<String, dynamic> json) =>
-      _$WordsDAOListRelationFilterFromJson(json);
-
-  final WordsDAOWhereInput? every;
-
-  final WordsDAOWhereInput? some;
-
-  final WordsDAOWhereInput? none;
-
-  @override
-  Map<String, dynamic> toJson() => _$WordsDAOListRelationFilterToJson(this);
-}
-
-@_i1.jsonSerializable
-class WordsDAOOrderByRelationAggregateInput implements _i1.JsonSerializable {
-  const WordsDAOOrderByRelationAggregateInput({this.$count});
-
-  factory WordsDAOOrderByRelationAggregateInput.fromJson(
-          Map<String, dynamic> json) =>
-      _$WordsDAOOrderByRelationAggregateInputFromJson(json);
-
-  @JsonKey(name: r'_count')
-  final SortOrder? $count;
-
-  @override
-  Map<String, dynamic> toJson() =>
-      _$WordsDAOOrderByRelationAggregateInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -2248,6 +2284,27 @@ class DictionariesDAOListRelationFilter implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
+class KanjiDAOListRelationFilter implements _i1.JsonSerializable {
+  const KanjiDAOListRelationFilter({
+    this.every,
+    this.some,
+    this.none,
+  });
+
+  factory KanjiDAOListRelationFilter.fromJson(Map<String, dynamic> json) =>
+      _$KanjiDAOListRelationFilterFromJson(json);
+
+  final KanjiDAOWhereInput? every;
+
+  final KanjiDAOWhereInput? some;
+
+  final KanjiDAOWhereInput? none;
+
+  @override
+  Map<String, dynamic> toJson() => _$KanjiDAOListRelationFilterToJson(this);
+}
+
+@_i1.jsonSerializable
 class DictionariesDAOOrderByRelationAggregateInput
     implements _i1.JsonSerializable {
   const DictionariesDAOOrderByRelationAggregateInput({this.$count});
@@ -2262,6 +2319,22 @@ class DictionariesDAOOrderByRelationAggregateInput
   @override
   Map<String, dynamic> toJson() =>
       _$DictionariesDAOOrderByRelationAggregateInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOOrderByRelationAggregateInput implements _i1.JsonSerializable {
+  const KanjiDAOOrderByRelationAggregateInput({this.$count});
+
+  factory KanjiDAOOrderByRelationAggregateInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOOrderByRelationAggregateInputFromJson(json);
+
+  @JsonKey(name: r'_count')
+  final SortOrder? $count;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOOrderByRelationAggregateInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -2728,6 +2801,144 @@ class TextsDAOUncheckedUpdateManyWithoutReadersNestedInput
 }
 
 @_i1.jsonSerializable
+class WordsDAOCreateNestedManyWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOCreateNestedManyWithoutKanjisInput({
+    this.create,
+    this.connectOrCreate,
+    this.connect,
+  });
+
+  factory WordsDAOCreateNestedManyWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOCreateNestedManyWithoutKanjisInputFromJson(json);
+
+  final Iterable<WordsDAOCreateWithoutKanjisInput>? create;
+
+  final Iterable<WordsDAOCreateOrConnectWithoutKanjisInput>? connectOrCreate;
+
+  final Iterable<WordsDAOWhereUniqueInput>? connect;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOCreateNestedManyWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUncheckedCreateNestedManyWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUncheckedCreateNestedManyWithoutKanjisInput({
+    this.create,
+    this.connectOrCreate,
+    this.connect,
+  });
+
+  factory WordsDAOUncheckedCreateNestedManyWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUncheckedCreateNestedManyWithoutKanjisInputFromJson(json);
+
+  final Iterable<WordsDAOCreateWithoutKanjisInput>? create;
+
+  final Iterable<WordsDAOCreateOrConnectWithoutKanjisInput>? connectOrCreate;
+
+  final Iterable<WordsDAOWhereUniqueInput>? connect;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUncheckedCreateNestedManyWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUpdateManyWithoutKanjisNestedInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUpdateManyWithoutKanjisNestedInput({
+    this.create,
+    this.connectOrCreate,
+    this.upsert,
+    this.set,
+    this.disconnect,
+    this.delete,
+    this.connect,
+    this.update,
+    this.updateMany,
+    this.deleteMany,
+  });
+
+  factory WordsDAOUpdateManyWithoutKanjisNestedInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUpdateManyWithoutKanjisNestedInputFromJson(json);
+
+  final Iterable<WordsDAOCreateWithoutKanjisInput>? create;
+
+  final Iterable<WordsDAOCreateOrConnectWithoutKanjisInput>? connectOrCreate;
+
+  final Iterable<WordsDAOUpsertWithWhereUniqueWithoutKanjisInput>? upsert;
+
+  final Iterable<WordsDAOWhereUniqueInput>? set;
+
+  final Iterable<WordsDAOWhereUniqueInput>? disconnect;
+
+  final Iterable<WordsDAOWhereUniqueInput>? delete;
+
+  final Iterable<WordsDAOWhereUniqueInput>? connect;
+
+  final Iterable<WordsDAOUpdateWithWhereUniqueWithoutKanjisInput>? update;
+
+  final Iterable<WordsDAOUpdateManyWithWhereWithoutKanjisInput>? updateMany;
+
+  final Iterable<WordsDAOScalarWhereInput>? deleteMany;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUpdateManyWithoutKanjisNestedInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput({
+    this.create,
+    this.connectOrCreate,
+    this.upsert,
+    this.set,
+    this.disconnect,
+    this.delete,
+    this.connect,
+    this.update,
+    this.updateMany,
+    this.deleteMany,
+  });
+
+  factory WordsDAOUncheckedUpdateManyWithoutKanjisNestedInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUncheckedUpdateManyWithoutKanjisNestedInputFromJson(json);
+
+  final Iterable<WordsDAOCreateWithoutKanjisInput>? create;
+
+  final Iterable<WordsDAOCreateOrConnectWithoutKanjisInput>? connectOrCreate;
+
+  final Iterable<WordsDAOUpsertWithWhereUniqueWithoutKanjisInput>? upsert;
+
+  final Iterable<WordsDAOWhereUniqueInput>? set;
+
+  final Iterable<WordsDAOWhereUniqueInput>? disconnect;
+
+  final Iterable<WordsDAOWhereUniqueInput>? delete;
+
+  final Iterable<WordsDAOWhereUniqueInput>? connect;
+
+  final Iterable<WordsDAOUpdateWithWhereUniqueWithoutKanjisInput>? update;
+
+  final Iterable<WordsDAOUpdateManyWithWhereWithoutKanjisInput>? updateMany;
+
+  final Iterable<WordsDAOScalarWhereInput>? deleteMany;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUncheckedUpdateManyWithoutKanjisNestedInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class UsersDAOCreateNestedOneWithoutDictionaryInput
     implements _i1.JsonSerializable {
   const UsersDAOCreateNestedOneWithoutDictionaryInput({
@@ -2945,6 +3156,30 @@ class DictionariesDAOCreateNestedManyWithoutWordsInput
 }
 
 @_i1.jsonSerializable
+class KanjiDAOCreateNestedManyWithoutWordsInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOCreateNestedManyWithoutWordsInput({
+    this.create,
+    this.connectOrCreate,
+    this.connect,
+  });
+
+  factory KanjiDAOCreateNestedManyWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOCreateNestedManyWithoutWordsInputFromJson(json);
+
+  final Iterable<KanjiDAOCreateWithoutWordsInput>? create;
+
+  final Iterable<KanjiDAOCreateOrConnectWithoutWordsInput>? connectOrCreate;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? connect;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOCreateNestedManyWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput
     implements _i1.JsonSerializable {
   const DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput({
@@ -2967,6 +3202,30 @@ class DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput
   @override
   Map<String, dynamic> toJson() =>
       _$DictionariesDAOUncheckedCreateNestedManyWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUncheckedCreateNestedManyWithoutWordsInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUncheckedCreateNestedManyWithoutWordsInput({
+    this.create,
+    this.connectOrCreate,
+    this.connect,
+  });
+
+  factory KanjiDAOUncheckedCreateNestedManyWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUncheckedCreateNestedManyWithoutWordsInputFromJson(json);
+
+  final Iterable<KanjiDAOCreateWithoutWordsInput>? create;
+
+  final Iterable<KanjiDAOCreateOrConnectWithoutWordsInput>? connectOrCreate;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? connect;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUncheckedCreateNestedManyWithoutWordsInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -3017,6 +3276,51 @@ class DictionariesDAOUpdateManyWithoutWordsNestedInput
 }
 
 @_i1.jsonSerializable
+class KanjiDAOUpdateManyWithoutWordsNestedInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUpdateManyWithoutWordsNestedInput({
+    this.create,
+    this.connectOrCreate,
+    this.upsert,
+    this.set,
+    this.disconnect,
+    this.delete,
+    this.connect,
+    this.update,
+    this.updateMany,
+    this.deleteMany,
+  });
+
+  factory KanjiDAOUpdateManyWithoutWordsNestedInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUpdateManyWithoutWordsNestedInputFromJson(json);
+
+  final Iterable<KanjiDAOCreateWithoutWordsInput>? create;
+
+  final Iterable<KanjiDAOCreateOrConnectWithoutWordsInput>? connectOrCreate;
+
+  final Iterable<KanjiDAOUpsertWithWhereUniqueWithoutWordsInput>? upsert;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? set;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? disconnect;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? delete;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? connect;
+
+  final Iterable<KanjiDAOUpdateWithWhereUniqueWithoutWordsInput>? update;
+
+  final Iterable<KanjiDAOUpdateManyWithWhereWithoutWordsInput>? updateMany;
+
+  final Iterable<KanjiDAOScalarWhereInput>? deleteMany;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUpdateManyWithoutWordsNestedInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput
     implements _i1.JsonSerializable {
   const DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput({
@@ -3061,6 +3365,51 @@ class DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput
   @override
   Map<String, dynamic> toJson() =>
       _$DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput({
+    this.create,
+    this.connectOrCreate,
+    this.upsert,
+    this.set,
+    this.disconnect,
+    this.delete,
+    this.connect,
+    this.update,
+    this.updateMany,
+    this.deleteMany,
+  });
+
+  factory KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUncheckedUpdateManyWithoutWordsNestedInputFromJson(json);
+
+  final Iterable<KanjiDAOCreateWithoutWordsInput>? create;
+
+  final Iterable<KanjiDAOCreateOrConnectWithoutWordsInput>? connectOrCreate;
+
+  final Iterable<KanjiDAOUpsertWithWhereUniqueWithoutWordsInput>? upsert;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? set;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? disconnect;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? delete;
+
+  final Iterable<KanjiDAOWhereUniqueInput>? connect;
+
+  final Iterable<KanjiDAOUpdateWithWhereUniqueWithoutWordsInput>? update;
+
+  final Iterable<KanjiDAOUpdateManyWithWhereWithoutWordsInput>? updateMany;
+
+  final Iterable<KanjiDAOScalarWhereInput>? deleteMany;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUncheckedUpdateManyWithoutWordsNestedInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -3708,6 +4057,176 @@ class TextsDAOScalarWhereInput implements _i1.JsonSerializable {
 }
 
 @_i1.jsonSerializable
+class WordsDAOCreateWithoutKanjisInput implements _i1.JsonSerializable {
+  const WordsDAOCreateWithoutKanjisInput({
+    required this.word,
+    required this.translation,
+    required this.reading,
+    this.dicts,
+  });
+
+  factory WordsDAOCreateWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOCreateWithoutKanjisInputFromJson(json);
+
+  final String word;
+
+  final String translation;
+
+  final String reading;
+
+  final DictionariesDAOCreateNestedManyWithoutWordsInput? dicts;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOCreateWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUncheckedCreateWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUncheckedCreateWithoutKanjisInput({
+    required this.word,
+    required this.translation,
+    required this.reading,
+    this.dicts,
+  });
+
+  factory WordsDAOUncheckedCreateWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUncheckedCreateWithoutKanjisInputFromJson(json);
+
+  final String word;
+
+  final String translation;
+
+  final String reading;
+
+  final DictionariesDAOUncheckedCreateNestedManyWithoutWordsInput? dicts;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUncheckedCreateWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOCreateOrConnectWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOCreateOrConnectWithoutKanjisInput({
+    required this.where,
+    required this.create,
+  });
+
+  factory WordsDAOCreateOrConnectWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOCreateOrConnectWithoutKanjisInputFromJson(json);
+
+  final WordsDAOWhereUniqueInput where;
+
+  final WordsDAOCreateWithoutKanjisInput create;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOCreateOrConnectWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUpsertWithWhereUniqueWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUpsertWithWhereUniqueWithoutKanjisInput({
+    required this.where,
+    required this.update,
+    required this.create,
+  });
+
+  factory WordsDAOUpsertWithWhereUniqueWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUpsertWithWhereUniqueWithoutKanjisInputFromJson(json);
+
+  final WordsDAOWhereUniqueInput where;
+
+  final WordsDAOUpdateWithoutKanjisInput update;
+
+  final WordsDAOCreateWithoutKanjisInput create;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUpsertWithWhereUniqueWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUpdateWithWhereUniqueWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUpdateWithWhereUniqueWithoutKanjisInput({
+    required this.where,
+    required this.data,
+  });
+
+  factory WordsDAOUpdateWithWhereUniqueWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUpdateWithWhereUniqueWithoutKanjisInputFromJson(json);
+
+  final WordsDAOWhereUniqueInput where;
+
+  final WordsDAOUpdateWithoutKanjisInput data;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUpdateWithWhereUniqueWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUpdateManyWithWhereWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUpdateManyWithWhereWithoutKanjisInput({
+    required this.where,
+    required this.data,
+  });
+
+  factory WordsDAOUpdateManyWithWhereWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUpdateManyWithWhereWithoutKanjisInputFromJson(json);
+
+  final WordsDAOScalarWhereInput where;
+
+  final WordsDAOUpdateManyMutationInput data;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUpdateManyWithWhereWithoutKanjisInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOScalarWhereInput implements _i1.JsonSerializable {
+  const WordsDAOScalarWhereInput({
+    this.AND,
+    this.OR,
+    this.NOT,
+    this.word,
+    this.translation,
+    this.reading,
+  });
+
+  factory WordsDAOScalarWhereInput.fromJson(Map<String, dynamic> json) =>
+      _$WordsDAOScalarWhereInputFromJson(json);
+
+  final Iterable<WordsDAOScalarWhereInput>? AND;
+
+  final Iterable<WordsDAOScalarWhereInput>? OR;
+
+  final Iterable<WordsDAOScalarWhereInput>? NOT;
+
+  final StringFilter? word;
+
+  final StringFilter? translation;
+
+  final StringFilter? reading;
+
+  @override
+  Map<String, dynamic> toJson() => _$WordsDAOScalarWhereInputToJson(this);
+}
+
+@_i1.jsonSerializable
 class UsersDAOCreateWithoutDictionaryInput implements _i1.JsonSerializable {
   const UsersDAOCreateWithoutDictionaryInput({
     this.id,
@@ -3795,6 +4314,7 @@ class WordsDAOCreateWithoutDictsInput implements _i1.JsonSerializable {
     required this.word,
     required this.translation,
     required this.reading,
+    this.kanjis,
   });
 
   factory WordsDAOCreateWithoutDictsInput.fromJson(Map<String, dynamic> json) =>
@@ -3805,6 +4325,8 @@ class WordsDAOCreateWithoutDictsInput implements _i1.JsonSerializable {
   final String translation;
 
   final String reading;
+
+  final KanjiDAOCreateNestedManyWithoutWordsInput? kanjis;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -3817,6 +4339,7 @@ class WordsDAOUncheckedCreateWithoutDictsInput implements _i1.JsonSerializable {
     required this.word,
     required this.translation,
     required this.reading,
+    this.kanjis,
   });
 
   factory WordsDAOUncheckedCreateWithoutDictsInput.fromJson(
@@ -3828,6 +4351,8 @@ class WordsDAOUncheckedCreateWithoutDictsInput implements _i1.JsonSerializable {
   final String translation;
 
   final String reading;
+
+  final KanjiDAOUncheckedCreateNestedManyWithoutWordsInput? kanjis;
 
   @override
   Map<String, dynamic> toJson() =>
@@ -4002,36 +4527,6 @@ class WordsDAOUpdateManyWithWhereWithoutDictsInput
 }
 
 @_i1.jsonSerializable
-class WordsDAOScalarWhereInput implements _i1.JsonSerializable {
-  const WordsDAOScalarWhereInput({
-    this.AND,
-    this.OR,
-    this.NOT,
-    this.word,
-    this.translation,
-    this.reading,
-  });
-
-  factory WordsDAOScalarWhereInput.fromJson(Map<String, dynamic> json) =>
-      _$WordsDAOScalarWhereInputFromJson(json);
-
-  final Iterable<WordsDAOScalarWhereInput>? AND;
-
-  final Iterable<WordsDAOScalarWhereInput>? OR;
-
-  final Iterable<WordsDAOScalarWhereInput>? NOT;
-
-  final StringFilter? word;
-
-  final StringFilter? translation;
-
-  final StringFilter? reading;
-
-  @override
-  Map<String, dynamic> toJson() => _$WordsDAOScalarWhereInputToJson(this);
-}
-
-@_i1.jsonSerializable
 class DictionariesDAOCreateWithoutWordsInput implements _i1.JsonSerializable {
   const DictionariesDAOCreateWithoutWordsInput({
     this.id,
@@ -4098,6 +4593,77 @@ class DictionariesDAOCreateOrConnectWithoutWordsInput
   @override
   Map<String, dynamic> toJson() =>
       _$DictionariesDAOCreateOrConnectWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOCreateWithoutWordsInput implements _i1.JsonSerializable {
+  const KanjiDAOCreateWithoutWordsInput({
+    required this.glyph,
+    required this.onyoumi,
+    required this.kunyoumi,
+    required this.meaning,
+  });
+
+  factory KanjiDAOCreateWithoutWordsInput.fromJson(Map<String, dynamic> json) =>
+      _$KanjiDAOCreateWithoutWordsInputFromJson(json);
+
+  final String glyph;
+
+  final String onyoumi;
+
+  final String kunyoumi;
+
+  final String meaning;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOCreateWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUncheckedCreateWithoutWordsInput implements _i1.JsonSerializable {
+  const KanjiDAOUncheckedCreateWithoutWordsInput({
+    required this.glyph,
+    required this.onyoumi,
+    required this.kunyoumi,
+    required this.meaning,
+  });
+
+  factory KanjiDAOUncheckedCreateWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUncheckedCreateWithoutWordsInputFromJson(json);
+
+  final String glyph;
+
+  final String onyoumi;
+
+  final String kunyoumi;
+
+  final String meaning;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUncheckedCreateWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOCreateOrConnectWithoutWordsInput implements _i1.JsonSerializable {
+  const KanjiDAOCreateOrConnectWithoutWordsInput({
+    required this.where,
+    required this.create,
+  });
+
+  factory KanjiDAOCreateOrConnectWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOCreateOrConnectWithoutWordsInputFromJson(json);
+
+  final KanjiDAOWhereUniqueInput where;
+
+  final KanjiDAOCreateWithoutWordsInput create;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOCreateOrConnectWithoutWordsInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4196,6 +4762,105 @@ class DictionariesDAOScalarWhereInput implements _i1.JsonSerializable {
   @override
   Map<String, dynamic> toJson() =>
       _$DictionariesDAOScalarWhereInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUpsertWithWhereUniqueWithoutWordsInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUpsertWithWhereUniqueWithoutWordsInput({
+    required this.where,
+    required this.update,
+    required this.create,
+  });
+
+  factory KanjiDAOUpsertWithWhereUniqueWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUpsertWithWhereUniqueWithoutWordsInputFromJson(json);
+
+  final KanjiDAOWhereUniqueInput where;
+
+  final KanjiDAOUpdateWithoutWordsInput update;
+
+  final KanjiDAOCreateWithoutWordsInput create;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUpsertWithWhereUniqueWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUpdateWithWhereUniqueWithoutWordsInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUpdateWithWhereUniqueWithoutWordsInput({
+    required this.where,
+    required this.data,
+  });
+
+  factory KanjiDAOUpdateWithWhereUniqueWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUpdateWithWhereUniqueWithoutWordsInputFromJson(json);
+
+  final KanjiDAOWhereUniqueInput where;
+
+  final KanjiDAOUpdateWithoutWordsInput data;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUpdateWithWhereUniqueWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUpdateManyWithWhereWithoutWordsInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUpdateManyWithWhereWithoutWordsInput({
+    required this.where,
+    required this.data,
+  });
+
+  factory KanjiDAOUpdateManyWithWhereWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUpdateManyWithWhereWithoutWordsInputFromJson(json);
+
+  final KanjiDAOScalarWhereInput where;
+
+  final KanjiDAOUpdateManyMutationInput data;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUpdateManyWithWhereWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOScalarWhereInput implements _i1.JsonSerializable {
+  const KanjiDAOScalarWhereInput({
+    this.AND,
+    this.OR,
+    this.NOT,
+    this.glyph,
+    this.onyoumi,
+    this.kunyoumi,
+    this.meaning,
+  });
+
+  factory KanjiDAOScalarWhereInput.fromJson(Map<String, dynamic> json) =>
+      _$KanjiDAOScalarWhereInputFromJson(json);
+
+  final Iterable<KanjiDAOScalarWhereInput>? AND;
+
+  final Iterable<KanjiDAOScalarWhereInput>? OR;
+
+  final Iterable<KanjiDAOScalarWhereInput>? NOT;
+
+  final StringFilter? glyph;
+
+  final StringFilter? onyoumi;
+
+  final StringFilter? kunyoumi;
+
+  final StringFilter? meaning;
+
+  @override
+  Map<String, dynamic> toJson() => _$KanjiDAOScalarWhereInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4449,15 +5114,17 @@ class TextsDAOUncheckedUpdateManyWithoutTextsInput
 }
 
 @_i1.jsonSerializable
-class WordsDAOUpdateWithoutDictsInput implements _i1.JsonSerializable {
-  const WordsDAOUpdateWithoutDictsInput({
+class WordsDAOUpdateWithoutKanjisInput implements _i1.JsonSerializable {
+  const WordsDAOUpdateWithoutKanjisInput({
     this.word,
     this.translation,
     this.reading,
+    this.dicts,
   });
 
-  factory WordsDAOUpdateWithoutDictsInput.fromJson(Map<String, dynamic> json) =>
-      _$WordsDAOUpdateWithoutDictsInputFromJson(json);
+  factory WordsDAOUpdateWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUpdateWithoutKanjisInputFromJson(json);
 
   final StringFieldUpdateOperationsInput? word;
 
@@ -4465,22 +5132,26 @@ class WordsDAOUpdateWithoutDictsInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? reading;
 
+  final DictionariesDAOUpdateManyWithoutWordsNestedInput? dicts;
+
   @override
   Map<String, dynamic> toJson() =>
-      _$WordsDAOUpdateWithoutDictsInputToJson(this);
+      _$WordsDAOUpdateWithoutKanjisInputToJson(this);
 }
 
 @_i1.jsonSerializable
-class WordsDAOUncheckedUpdateWithoutDictsInput implements _i1.JsonSerializable {
-  const WordsDAOUncheckedUpdateWithoutDictsInput({
+class WordsDAOUncheckedUpdateWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const WordsDAOUncheckedUpdateWithoutKanjisInput({
     this.word,
     this.translation,
     this.reading,
+    this.dicts,
   });
 
-  factory WordsDAOUncheckedUpdateWithoutDictsInput.fromJson(
+  factory WordsDAOUncheckedUpdateWithoutKanjisInput.fromJson(
           Map<String, dynamic> json) =>
-      _$WordsDAOUncheckedUpdateWithoutDictsInputFromJson(json);
+      _$WordsDAOUncheckedUpdateWithoutKanjisInputFromJson(json);
 
   final StringFieldUpdateOperationsInput? word;
 
@@ -4488,9 +5159,11 @@ class WordsDAOUncheckedUpdateWithoutDictsInput implements _i1.JsonSerializable {
 
   final StringFieldUpdateOperationsInput? reading;
 
+  final DictionariesDAOUncheckedUpdateManyWithoutWordsNestedInput? dicts;
+
   @override
   Map<String, dynamic> toJson() =>
-      _$WordsDAOUncheckedUpdateWithoutDictsInputToJson(this);
+      _$WordsDAOUncheckedUpdateWithoutKanjisInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4515,6 +5188,57 @@ class WordsDAOUncheckedUpdateManyWithoutWordsInput
   @override
   Map<String, dynamic> toJson() =>
       _$WordsDAOUncheckedUpdateManyWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUpdateWithoutDictsInput implements _i1.JsonSerializable {
+  const WordsDAOUpdateWithoutDictsInput({
+    this.word,
+    this.translation,
+    this.reading,
+    this.kanjis,
+  });
+
+  factory WordsDAOUpdateWithoutDictsInput.fromJson(Map<String, dynamic> json) =>
+      _$WordsDAOUpdateWithoutDictsInputFromJson(json);
+
+  final StringFieldUpdateOperationsInput? word;
+
+  final StringFieldUpdateOperationsInput? translation;
+
+  final StringFieldUpdateOperationsInput? reading;
+
+  final KanjiDAOUpdateManyWithoutWordsNestedInput? kanjis;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUpdateWithoutDictsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class WordsDAOUncheckedUpdateWithoutDictsInput implements _i1.JsonSerializable {
+  const WordsDAOUncheckedUpdateWithoutDictsInput({
+    this.word,
+    this.translation,
+    this.reading,
+    this.kanjis,
+  });
+
+  factory WordsDAOUncheckedUpdateWithoutDictsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$WordsDAOUncheckedUpdateWithoutDictsInputFromJson(json);
+
+  final StringFieldUpdateOperationsInput? word;
+
+  final StringFieldUpdateOperationsInput? translation;
+
+  final StringFieldUpdateOperationsInput? reading;
+
+  final KanjiDAOUncheckedUpdateManyWithoutWordsNestedInput? kanjis;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$WordsDAOUncheckedUpdateWithoutDictsInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4588,6 +5312,84 @@ class DictionariesDAOUncheckedUpdateManyWithoutDictsInput
   @override
   Map<String, dynamic> toJson() =>
       _$DictionariesDAOUncheckedUpdateManyWithoutDictsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUpdateWithoutWordsInput implements _i1.JsonSerializable {
+  const KanjiDAOUpdateWithoutWordsInput({
+    this.glyph,
+    this.onyoumi,
+    this.kunyoumi,
+    this.meaning,
+  });
+
+  factory KanjiDAOUpdateWithoutWordsInput.fromJson(Map<String, dynamic> json) =>
+      _$KanjiDAOUpdateWithoutWordsInputFromJson(json);
+
+  final StringFieldUpdateOperationsInput? glyph;
+
+  final StringFieldUpdateOperationsInput? onyoumi;
+
+  final StringFieldUpdateOperationsInput? kunyoumi;
+
+  final StringFieldUpdateOperationsInput? meaning;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUpdateWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUncheckedUpdateWithoutWordsInput implements _i1.JsonSerializable {
+  const KanjiDAOUncheckedUpdateWithoutWordsInput({
+    this.glyph,
+    this.onyoumi,
+    this.kunyoumi,
+    this.meaning,
+  });
+
+  factory KanjiDAOUncheckedUpdateWithoutWordsInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUncheckedUpdateWithoutWordsInputFromJson(json);
+
+  final StringFieldUpdateOperationsInput? glyph;
+
+  final StringFieldUpdateOperationsInput? onyoumi;
+
+  final StringFieldUpdateOperationsInput? kunyoumi;
+
+  final StringFieldUpdateOperationsInput? meaning;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUncheckedUpdateWithoutWordsInputToJson(this);
+}
+
+@_i1.jsonSerializable
+class KanjiDAOUncheckedUpdateManyWithoutKanjisInput
+    implements _i1.JsonSerializable {
+  const KanjiDAOUncheckedUpdateManyWithoutKanjisInput({
+    this.glyph,
+    this.onyoumi,
+    this.kunyoumi,
+    this.meaning,
+  });
+
+  factory KanjiDAOUncheckedUpdateManyWithoutKanjisInput.fromJson(
+          Map<String, dynamic> json) =>
+      _$KanjiDAOUncheckedUpdateManyWithoutKanjisInputFromJson(json);
+
+  final StringFieldUpdateOperationsInput? glyph;
+
+  final StringFieldUpdateOperationsInput? onyoumi;
+
+  final StringFieldUpdateOperationsInput? kunyoumi;
+
+  final StringFieldUpdateOperationsInput? meaning;
+
+  @override
+  Map<String, dynamic> toJson() =>
+      _$KanjiDAOUncheckedUpdateManyWithoutKanjisInputToJson(this);
 }
 
 @_i1.jsonSerializable
@@ -4887,6 +5689,70 @@ class KanjiDAOFluent<T> extends _i1.PrismaFluent<T> {
     super.original,
     super.$query,
   );
+
+  Future<Iterable<WordsDAO>?> words({
+    WordsDAOWhereInput? where,
+    Iterable<WordsDAOOrderByWithRelationInput>? orderBy,
+    WordsDAOWhereUniqueInput? cursor,
+    int? take,
+    int? skip,
+    Iterable<WordsDAOScalarFieldEnum>? distinct,
+  }) {
+    final args = [
+      _i2.GraphQLArg(
+        r'where',
+        where,
+      ),
+      _i2.GraphQLArg(
+        r'orderBy',
+        orderBy,
+      ),
+      _i2.GraphQLArg(
+        r'cursor',
+        cursor,
+      ),
+      _i2.GraphQLArg(
+        r'take',
+        take,
+      ),
+      _i2.GraphQLArg(
+        r'skip',
+        skip,
+      ),
+      _i2.GraphQLArg(
+        r'distinct',
+        distinct,
+      ),
+    ];
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'words',
+          fields: fields,
+          args: args,
+        )
+      ]),
+      key: r'words',
+    );
+    final fields = WordsDAOScalarFieldEnum.values.toGraphQLFields();
+    compiler(Iterable<Map> words) =>
+        words.map((Map words) => WordsDAO.fromJson(words.cast()));
+    return query(fields)
+        .then((json) => json is Iterable ? compiler(json.cast()) : null);
+  }
+
+  KanjiDAOCountOutputType $count() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'_count',
+          fields: fields,
+        )
+      ]),
+      key: r'_count',
+    );
+    return KanjiDAOCountOutputType(query);
+  }
 }
 
 class DictionariesDAOFluent<T> extends _i1.PrismaFluent<T> {
@@ -5034,6 +5900,57 @@ class WordsDAOFluent<T> extends _i1.PrismaFluent<T> {
     final fields = DictionariesDAOScalarFieldEnum.values.toGraphQLFields();
     compiler(Iterable<Map> dicts) =>
         dicts.map((Map dicts) => DictionariesDAO.fromJson(dicts.cast()));
+    return query(fields)
+        .then((json) => json is Iterable ? compiler(json.cast()) : null);
+  }
+
+  Future<Iterable<KanjiDAO>?> kanjis({
+    KanjiDAOWhereInput? where,
+    Iterable<KanjiDAOOrderByWithRelationInput>? orderBy,
+    KanjiDAOWhereUniqueInput? cursor,
+    int? take,
+    int? skip,
+    Iterable<KanjiDAOScalarFieldEnum>? distinct,
+  }) {
+    final args = [
+      _i2.GraphQLArg(
+        r'where',
+        where,
+      ),
+      _i2.GraphQLArg(
+        r'orderBy',
+        orderBy,
+      ),
+      _i2.GraphQLArg(
+        r'cursor',
+        cursor,
+      ),
+      _i2.GraphQLArg(
+        r'take',
+        take,
+      ),
+      _i2.GraphQLArg(
+        r'skip',
+        skip,
+      ),
+      _i2.GraphQLArg(
+        r'distinct',
+        distinct,
+      ),
+    ];
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'kanjis',
+          fields: fields,
+          args: args,
+        )
+      ]),
+      key: r'kanjis',
+    );
+    final fields = KanjiDAOScalarFieldEnum.values.toGraphQLFields();
+    compiler(Iterable<Map> kanjis) =>
+        kanjis.map((Map kanjis) => KanjiDAO.fromJson(kanjis.cast()));
     return query(fields)
         .then((json) => json is Iterable ? compiler(json.cast()) : null);
   }
@@ -8366,6 +9283,25 @@ class UsersDAOMaxAggregateOutputType {
   }
 }
 
+class KanjiDAOCountOutputType {
+  const KanjiDAOCountOutputType(this.$query);
+
+  final _i1.PrismaFluentQuery $query;
+
+  Future<int> words() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'words',
+          fields: fields,
+        )
+      ]),
+      key: r'words',
+    );
+    return query(const []).then((value) => (value as int));
+  }
+}
+
 class KanjiDAOCountAggregateOutputType {
   const KanjiDAOCountAggregateOutputType(this.$query);
 
@@ -8737,6 +9673,19 @@ class WordsDAOCountOutputType {
     );
     return query(const []).then((value) => (value as int));
   }
+
+  Future<int> kanjis() {
+    final query = _i1.PrismaFluent.queryBuilder(
+      query: (fields) => $query([
+        _i2.GraphQLField(
+          r'kanjis',
+          fields: fields,
+        )
+      ]),
+      key: r'kanjis',
+    );
+    return query(const []).then((value) => (value as int));
+  }
 }
 
 class WordsDAOCountAggregateOutputType {
@@ -9094,7 +10043,7 @@ class PrismaClient extends _i1.BasePrismaClient<PrismaClient> {
     final engine = _i5.BinaryEngine(
       logger: logger,
       schema:
-          r'Z2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAiZGFydCBydW4gb3JtIgogIG91dHB1dCAgID0gIi4uL2xpYi9kYXRhL3JlcG9zaXRvcmllcy9wcmlzbWEiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiCiAgdXJsICAgICAgPSBlbnYoIkRBVEFCQVNFX1VSTCIpCn0KCmVudW0gUm9sZSB7CiAgVVNFUgogIE1PREVSQVRPUgogIEFETUlOCn0KCm1vZGVsIFVzZXJzREFPIHsKICBpZCAgICAgICAgICAgU3RyaW5nICAgICAgICAgICBAaWQgQGRlZmF1bHQodXVpZCgpKQogIGFjY291bnRfbmFtZSBTdHJpbmcgICAgICAgICAgIEB1bmlxdWUKICBwYXNzd29yZCAgICAgU3RyaW5nCiAgcm9sZSAgICAgICAgIFJvbGUKICBkaWN0aW9uYXJ5ICAgRGljdGlvbmFyaWVzREFPPwogIHRleHRzICAgICAgICBUZXh0c0RBT1tdCn0KCm1vZGVsIEthbmppREFPIHsKICBnbHlwaCAgICBTdHJpbmcgQGlkCiAgb255b3VtaSAgU3RyaW5nCiAga3VueW91bWkgU3RyaW5nCiAgbWVhbmluZyAgU3RyaW5nCn0KCm1vZGVsIERpY3Rpb25hcmllc0RBTyB7CiAgaWQgICAgICAgU3RyaW5nICAgICBAaWQgQGRlZmF1bHQodXVpZCgpKQogIHRpdGxlICAgIFN0cmluZwogIG93bmVyX2lkIFN0cmluZyAgICAgQHVuaXF1ZQogIG93bmVyICAgIFVzZXJzREFPICAgQHJlbGF0aW9uKGZpZWxkczogW293bmVyX2lkXSwgcmVmZXJlbmNlczogW2lkXSkKICB3b3JkcyAgICBXb3Jkc0RBT1tdCn0KCm1vZGVsIFdvcmRzREFPIHsKICB3b3JkICAgICAgICBTdHJpbmcgICAgICAgICAgICBAaWQKICB0cmFuc2xhdGlvbiBTdHJpbmcKICByZWFkaW5nICAgICBTdHJpbmcKICBkaWN0cyAgICAgICBEaWN0aW9uYXJpZXNEQU9bXQp9Cgptb2RlbCBUZXh0c0RBTyB7CiAgaWQgICAgICBTdHJpbmcgICAgIEBpZCBAZGVmYXVsdCh1dWlkKCkpCiAgdGl0bGUgICBTdHJpbmcKICB0ZXh0ICAgIFN0cmluZwogIHJlYWRlcnMgVXNlcnNEQU9bXQp9Cg==',
+          r'Z2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAiZGFydCBydW4gb3JtIgogIG91dHB1dCAgID0gIi4uL2xpYi9kYXRhL3JlcG9zaXRvcmllcy9wcmlzbWEiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyID0gInBvc3RncmVzcWwiCiAgdXJsICAgICAgPSBlbnYoIkRBVEFCQVNFX1VSTCIpCn0KCmVudW0gUm9sZSB7CiAgVVNFUgogIE1PREVSQVRPUgogIEFETUlOCn0KCm1vZGVsIFVzZXJzREFPIHsKICBpZCAgICAgICAgICAgU3RyaW5nICAgICAgICAgICBAaWQgQGRlZmF1bHQodXVpZCgpKQogIGFjY291bnRfbmFtZSBTdHJpbmcgICAgICAgICAgIEB1bmlxdWUKICBwYXNzd29yZCAgICAgU3RyaW5nCiAgcm9sZSAgICAgICAgIFJvbGUKICBkaWN0aW9uYXJ5ICAgRGljdGlvbmFyaWVzREFPPwogIHRleHRzICAgICAgICBUZXh0c0RBT1tdCn0KCm1vZGVsIEthbmppREFPIHsKICBnbHlwaCAgICBTdHJpbmcgQGlkCiAgb255b3VtaSAgU3RyaW5nCiAga3VueW91bWkgU3RyaW5nCiAgbWVhbmluZyAgU3RyaW5nCiAgd29yZHMgICAgV29yZHNEQU9bXQp9Cgptb2RlbCBEaWN0aW9uYXJpZXNEQU8gewogIGlkICAgICAgIFN0cmluZyAgICAgQGlkIEBkZWZhdWx0KHV1aWQoKSkKICB0aXRsZSAgICBTdHJpbmcKICBvd25lcl9pZCBTdHJpbmcgICAgIEB1bmlxdWUKICBvd25lciAgICBVc2Vyc0RBTyAgIEByZWxhdGlvbihmaWVsZHM6IFtvd25lcl9pZF0sIHJlZmVyZW5jZXM6IFtpZF0pCiAgd29yZHMgICAgV29yZHNEQU9bXQp9Cgptb2RlbCBXb3Jkc0RBTyB7CiAgd29yZCAgICAgICAgU3RyaW5nICAgICAgICAgICAgQGlkCiAgdHJhbnNsYXRpb24gU3RyaW5nCiAgcmVhZGluZyAgICAgU3RyaW5nCiAgZGljdHMgICAgICAgRGljdGlvbmFyaWVzREFPW10KICBrYW5qaXMgICAgICBLYW5qaURBT1tdCn0KCm1vZGVsIFRleHRzREFPIHsKICBpZCAgICAgIFN0cmluZyAgICAgQGlkIEBkZWZhdWx0KHV1aWQoKSkKICB0aXRsZSAgIFN0cmluZwogIHRleHQgICAgU3RyaW5nCiAgcmVhZGVycyBVc2Vyc0RBT1tdCn0K',
       datasources: datasources?.toJson().cast() ?? const {},
       executable:
           r'/home/yorlend/prog/db-cp/kango/node_modules/prisma/query-engine-debian-openssl-3.0.x',
