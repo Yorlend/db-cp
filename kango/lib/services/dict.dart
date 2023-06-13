@@ -3,7 +3,7 @@ import 'package:kango/data/repositories/dict.dart';
 import 'package:kango/services/auth.dart';
 
 class DictService {
-  final AuthService _authService;
+  final IAuthService _authService;
   final DictionaryRepository _dictRepository;
 
   DictService(this._authService, this._dictRepository);

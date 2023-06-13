@@ -4,7 +4,7 @@ import 'package:kango/services/auth.dart';
 
 class UserService {
   final UserRepository _userRepository;
-  final AuthService _authService;
+  final IAuthService _authService;
 
   const UserService(this._authService, this._userRepository);
 

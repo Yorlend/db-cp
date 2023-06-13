@@ -9,10 +9,21 @@ import 'package:kango/services/auth.dart';
 import 'package:kango/vendor/goo/goo.dart';
 import 'package:kango/vendor/jisho/jisho.dart';
 
-class TextsProvider extends ChangeNotifier {
+abstract class ITextsProvider extends ChangeNotifier {
+  List<entity.Text> get texts;
+
+  Future<void> uploadText(String title, String content);
+  Future<void> deleteText(String id);
+  Future<void> updateText(String id, String newTitle, String newContent);
+
+  Future<List<User>> getAccecients(String textId);
+  Future<void> updateAccecients(String textId, List<User> newReaders);
+}
+
+class TextsProvider extends ITextsProvider {
   final TextRepository _textRepository;
   final WordRepository _wordRepository;
-  final AuthService _authService;
+  final IAuthService _authService;
 
   List<entity.Text> _texts = [];
 
@@ -20,11 +31,13 @@ class TextsProvider extends ChangeNotifier {
     _reloadTexts();
   }
 
+  @override
   List<entity.Text> get texts {
     _reloadTexts();
     return _texts;
   }
 
+  @override
   Future<void> uploadText(String title, String content) async {
     if (!_authService.isModerator) {
       throw 'Пользователь не модератор';
@@ -48,6 +61,7 @@ class TextsProvider extends ChangeNotifier {
     }
   }
 
+  @override
   Future<void> deleteText(String id) async {
     if (!_authService.isModerator) {
       throw 'Пользователь не модератор';
@@ -57,6 +71,7 @@ class TextsProvider extends ChangeNotifier {
     }
   }
 
+  @override
   Future<void> updateText(String id, String newTitle, String newContent) async {
     if (!_authService.isModerator) {
       throw 'Пользователь не модератор';
@@ -66,6 +81,7 @@ class TextsProvider extends ChangeNotifier {
     }
   }
 
+  @override
   Future<List<User>> getAccecients(String textId) async {
     if (!_authService.isModerator) {
       throw 'Пользователь не модератор';
@@ -74,6 +90,7 @@ class TextsProvider extends ChangeNotifier {
     }
   }
 
+  @override
   Future<void> updateAccecients(String textId, List<User> newReaders) async {
     if (!_authService.isModerator) {
       throw 'Пользователь не модератор';

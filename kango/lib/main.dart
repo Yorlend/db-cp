@@ -43,7 +43,7 @@ void main() async {
   final wordService = WordService(wordRepo);
   final dictService = DictService(authService, dictRepo);
 
-  GetIt.I.registerSingleton<AuthService>(authService);
+  GetIt.I.registerSingleton<IAuthService>(authService);
   GetIt.I.registerSingleton<UserService>(userService);
   GetIt.I.registerSingleton<WordService>(wordService);
   GetIt.I.registerSingleton<DictService>(dictService);

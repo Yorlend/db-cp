@@ -1,20 +1,31 @@
 \babel@toc {russian}{}\relax 
-\contentsline {chapter}{ОПРЕДЕЛЕНИЯ}{3}{chapter*.3}%
-\contentsline {chapter}{ВВЕДЕНИЕ}{4}{chapter*.4}%
-\contentsline {chapter}{\numberline {1}Аналитический раздел}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Использование цифровых технологий в изучении языков}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Базы данных, системы управления базами данных}{5}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Выбор системы управления базами данных}{6}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Обзор существующего программного обеспечения для упрощения изучения японского языка}{7}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Проектирование базы данных}{9}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Диаграмма базы данных в нотации Чена}{9}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Пользовательские роли проектируемого приложения}{9}{subsection.1.5.2}%
-\contentsline {chapter}{\numberline {2}Конструкторский раздел}{12}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Концептуальная модель системы}{12}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Диаграмма прецедентов}{13}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Схема базы данных}{15}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Технологический раздел}{16}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Исследовательский раздел}{17}{chapter.4}%
-\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{18}{chapter*.15}%
-\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{20}{chapter*.16}%
-\contentsline {chapter}{ПРИЛОЖЕНИЕ \numberline {\CYRA }}{21}{appendix.1.A}%
+\contentsline {chapter}{РЕФЕРАТ}{2}{chapter*.2}%
+\contentsline {chapter}{ОПРЕДЕЛЕНИЯ}{5}{chapter*.4}%
+\contentsline {chapter}{ВВЕДЕНИЕ}{6}{chapter*.5}%
+\contentsline {chapter}{\numberline {1}Аналитический раздел}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Использование цифровых технологий в изучении языков}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Базы данных, системы управления базами данных}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Выбор системы управления базами данных}{8}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Обзор существующего программного обеспечения для упрощения изучения японского языка}{9}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Проектирование базы данных}{11}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Диаграмма базы данных в нотации Чена}{11}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Пользовательские роли проектируемого приложения}{11}{subsection.1.5.2}%
+\contentsline {chapter}{\numberline {2}Конструкторский раздел}{14}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Концептуальная модель системы}{14}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Диаграмма прецедентов}{15}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Схема базы данных}{17}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Ограничения целостности}{18}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Требования к ПО}{19}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Технологический раздел}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Выбор средств реализации}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}База данных}{21}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Связь с приложением}{22}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Триггер}{24}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Аутентификация}{25}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Тестирование}{27}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Исследовательский раздел}{30}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Постановка исследования}{30}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Результаты исследования}{31}{section.4.2}%
+\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{35}{chapter*.18}%
+\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{37}{chapter*.19}%
+\contentsline {chapter}{ПРИЛОЖЕНИЕ \numberline {\CYRA }}{38}{appendix.1.A}%

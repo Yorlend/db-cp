@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.8)  8 JUN 2023 14:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.10)  13 JUN 2023 16:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1286,7 +1286,11 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'russian'.
- (./coursework.aux (./01-definitions.aux) (./03-introduction.aux) (./04-analysis.aux) (./05-design.aux) (./06-implementation.aux) (./07-research.aux) (./08-conclusion.aux) (./09-appendix.aux))
+ (./coursework.aux (./00-essay.aux) (./01-definitions.aux) (./03-introduction.aux) (./04-analysis.aux) (./05-design.aux) (./06-implementation.aux
+
+LaTeX Warning: Label `lst:word.dart' multiply defined.
+
+) (./07-research.aux) (./08-conclusion.aux) (./09-appendix.aux))
 \openout1 = `coursework.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -1432,7 +1436,7 @@ Package hyperref Info: Link coloring OFF on input line 7.
 \@outlinefile=\write5
 \openout5 = `coursework.out'.
 
-<bmstu-logo.pdf, id=83, 500.95255pt x 591.38255pt>
+<bmstu-logo.pdf, id=127, 500.95255pt x 591.38255pt>
 File: bmstu-logo.pdf Graphic file (type pdf)
 <use bmstu-logo.pdf>
 Package pdftex.def Info: bmstu-logo.pdf  used on input line 15.
@@ -1472,30 +1476,38 @@ Underfull \hbox (badness 10000) in alignment at lines 15--15
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc} </home/yorlend/texmf/tex/latex/bmstu/bmstu-logo.pdf>]
+\openout2 = `00-essay.aux'.
+
+ (./00-essay.tex
 
 LaTeX Font Warning: Font shape `T2A/cmr/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 19.
+(Font)              size <17.28> substituted on input line 1.
 
 
 LaTeX Font Warning: Font shape `T2A/cmr/bx/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 19.
+(Font)              size <17.28> substituted on input line 1.
 
-(./coursework.toc)
+) [2
+
+
+] (./coursework.toc [3
+
+
+
+])
 \tf@toc=\write6
 \openout6 = `coursework.toc'.
 
- [2
-
-]
+ [4]
 \openout2 = `01-definitions.aux'.
 
- (./01-definitions.tex) [3
+ (./01-definitions.tex) [5
 
 
 ]
 \openout2 = `03-introduction.aux'.
 
- (./03-introduction.tex) [4
+ (./03-introduction.tex) [6
 
 
 
@@ -1505,110 +1517,77 @@ LaTeX Font Warning: Font shape `T2A/cmr/bx/n' in size <16> not available
 
  (./04-analysis.tex
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 1.
-[5
+[7
 
 
 
 
-] [6] [7
+] [8] [9
 
-] [8]
-<inc/img/er.pdf, id=204, 579.12357pt x 371.46779pt>
+] [10]
+<inc/img/er.pdf, id=267, 579.12357pt x 371.46779pt>
 File: inc/img/er.pdf Graphic file (type pdf)
 <use inc/img/er.pdf>
-Package pdftex.def Info: inc/img/er.pdf  used on input line 173.
+Package pdftex.def Info: inc/img/er.pdf  used on input line 167.
 (pdftex.def)             Requested size: 483.69687pt x 310.26802pt.
- [9
+ [11
 
  <./inc/img/er.pdf>]
-<inc/img/cw-usecase.pdf, id=222, 431.69278pt x 428.5611pt>
+<inc/img/cw-usecase.pdf, id=284, 431.69278pt x 428.5611pt>
 File: inc/img/cw-usecase.pdf Graphic file (type pdf)
 <use inc/img/cw-usecase.pdf>
-Package pdftex.def Info: inc/img/cw-usecase.pdf  used on input line 199.
+Package pdftex.def Info: inc/img/cw-usecase.pdf  used on input line 195.
 (pdftex.def)             Requested size: 362.77264pt x 360.13927pt.
- [10 <./inc/img/cw-usecase.pdf>]) [11]
+ [12 <./inc/img/cw-usecase.pdf>]) [13]
 \openout2 = `05-design.aux'.
 
  (./05-design.tex
 {\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 2.
-<inc/img/01_A0.png, id=244, 1606.0pt x 1112.155pt>
+<inc/img/01_A0.png, id=308, 1606.0pt x 1112.155pt>
 File: inc/img/01_A0.png Graphic file (type png)
 <use inc/img/01_A0.png>
-Package pdftex.def Info: inc/img/01_A0.png  used on input line 14.
+Package pdftex.def Info: inc/img/01_A0.png  used on input line 18.
 (pdftex.def)             Requested size: 483.69687pt x 334.95578pt.
-[12
+[14
 
 
 
 
  <./inc/img/01_A0.png (PNG copy)>]
-<inc/img/02_A0.png, id=252, 1606.0pt x 1112.155pt>
+<inc/img/02_A0.png, id=317, 1606.0pt x 1112.155pt>
 File: inc/img/02_A0.png Graphic file (type png)
 <use inc/img/02_A0.png>
-Package pdftex.def Info: inc/img/02_A0.png  used on input line 23.
+Package pdftex.def Info: inc/img/02_A0.png  used on input line 27.
 (pdftex.def)             Requested size: 483.69687pt x 334.95578pt.
-<inc/img/cw-user.pdf, id=255, 690.66026pt x 219.70079pt>
+<inc/img/cw-user.pdf, id=319, 690.66026pt x 219.70079pt>
 File: inc/img/cw-user.pdf Graphic file (type pdf)
 <use inc/img/cw-user.pdf>
-Package pdftex.def Info: inc/img/cw-user.pdf  used on input line 34.
+Package pdftex.def Info: inc/img/cw-user.pdf  used on input line 38.
 (pdftex.def)             Requested size: 459.51054pt x 146.16957pt.
-<inc/img/cw-mod.pdf, id=256, 658.37968pt x 342.31888pt>
+ [15
+
+ <./inc/img/02_A0.png (PNG copy)> <./inc/img/cw-user.pdf>]
+<inc/img/cw-mod.pdf, id=335, 658.37968pt x 342.31888pt>
 File: inc/img/cw-mod.pdf Graphic file (type pdf)
 <use inc/img/cw-mod.pdf>
-Package pdftex.def Info: inc/img/cw-mod.pdf  used on input line 41.
-(pdftex.def)             Requested size: 483.69687pt x 251.49426pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<inc/img/cw-admin.pdf, id=257, 690.66026pt x 342.31888pt>
+Package pdftex.def Info: inc/img/cw-mod.pdf  used on input line 49.
+(pdftex.def)             Requested size: 459.51054pt x 238.91641pt.
+<inc/img/cw-admin.pdf, id=337, 690.66026pt x 342.31888pt>
 File: inc/img/cw-admin.pdf Graphic file (type pdf)
 <use inc/img/cw-admin.pdf>
-Package pdftex.def Info: inc/img/cw-admin.pdf  used on input line 48.
-(pdftex.def)             Requested size: 483.69687pt x 239.73648pt.
+Package pdftex.def Info: inc/img/cw-admin.pdf  used on input line 58.
+(pdftex.def)             Requested size: 459.51054pt x 227.74887pt.
+ [16
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ <./inc/img/cw-mod.pdf> <./inc/img/cw-admin.pdf>] [17
 
-[13
-
- <./inc/img/02_A0.png (PNG copy)> <./inc/img/cw-user.pdf>] [14 <./inc/img/cw-mod.pdf> <./inc/img/cw-admin.pdf>]
-<inc/img/schema.png, id=297, 1181.41376pt x 665.48625pt>
+]
+<inc/img/schema.png, id=372, 1181.41376pt x 665.48625pt>
 File: inc/img/schema.png Graphic file (type png)
 <use inc/img/schema.png>
-Package pdftex.def Info: inc/img/schema.png  used on input line 59.
+Package pdftex.def Info: inc/img/schema.png  used on input line 103.
 (pdftex.def)             Requested size: 483.69687pt x 272.46526pt.
-) [15
-
- <./inc/img/schema.png>]
-\openout2 = `06-implementation.aux'.
-
- (./06-implementation.tex
-{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 3.
-) [16
-
-
-
-
-]
-\openout2 = `07-research.aux'.
-
- (./07-research.tex
-{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 4.
-) [17
-
-
-
-
-]
-\openout2 = `08-conclusion.aux'.
-
- (./08-conclusion.tex) [18
-
-
-
-
-]
-LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 31.
+LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 110.
  (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
@@ -1616,31 +1595,138 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T2A).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+ [18
 
-Underfull \hbox (badness 1248) in paragraph at lines 31--31
-[]\T2A/cmr/m/n/14.4 (+20) Microsoft: SQL Server. [Ёлек-трон-ный –е-сурс]. ^^V –е-жим ƒо-сту-па:
- []
+ <./inc/img/schema.png>]) [19]
+\openout2 = `06-implementation.aux'.
 
-[19
+ (./06-implementation.tex
+{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 3.
+[20
+
 
 
 
 ]
-Underfull \hbox (badness 6364) in paragraph at lines 31--31
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 24.
+Package csquotes Info: Input encoding change on input line 24.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) (/usr/share/texmf-dist/tex/generic/stringenc/se-utf8.def
+File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
+) (/usr/share/texmf-dist/tex/generic/stringenc/se-koi8-r.def
+File: se-koi8-r.def 2019/11/29 v1.12 stringenc: KOI8-R
+) [21
+
+]
+Package csquotes Info: Input encoding change on input line 32.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [22]
+Package csquotes Info: Input encoding change on input line 36.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 40.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 44.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [23]
+Package csquotes Info: Input encoding change on input line 54.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [24
+
+]
+Package csquotes Info: Input encoding change on input line 64.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [25
+
+] [26]
+Package csquotes Info: Input encoding change on input line 74.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [27
+
+]
+Package csquotes Info: Input encoding change on input line 80.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+)
+Package csquotes Info: Input encoding change on input line 84.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [28
+
+]) [29]
+\openout2 = `07-research.aux'.
+
+ (./07-research.tex
+{\cyrillictext \CYRG \cyrl \cyra \cyrv \cyra } 4.
+[30
+
+
+
+
+]
+Package csquotes Info: Input encoding change on input line 24.
+ (/usr/share/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2022/06/11 v1.0e Input encoding file
+) [31
+
+] [32]
+<inc/img/research.pdf, id=804, 416.0117pt x 320.33691pt>
+File: inc/img/research.pdf Graphic file (type pdf)
+<use inc/img/research.pdf>
+Package pdftex.def Info: inc/img/research.pdf  used on input line 35.
+(pdftex.def)             Requested size: 483.69687pt x 372.46112pt.
+ [33
+
+ <./inc/img/research.pdf>]
+<inc/img/research_scale.pdf, id=848, 441.7993pt x 312.02145pt>
+File: inc/img/research_scale.pdf Graphic file (type pdf)
+<use inc/img/research_scale.pdf>
+Package pdftex.def Info: inc/img/research_scale.pdf  used on input line 48.
+(pdftex.def)             Requested size: 483.69687pt x 341.62016pt.
+) [34
+
+ <./inc/img/research_scale.pdf>]
+\openout2 = `08-conclusion.aux'.
+
+ (./08-conclusion.tex) [35
+
+
+
+
+]
+Underfull \hbox (badness 1248) in paragraph at lines 33--33
+[]\T2A/cmr/m/n/14.4 (+20) Microsoft: SQL Server. [Ёлек-трон-ный –е-сурс]. ^^V –е-жим ƒо-сту-па:
+ []
+
+[36
+
+
+
+]
+Underfull \hbox (badness 6364) in paragraph at lines 33--33
 []\T2A/cmr/m/n/14.4 (+20) Database | Oracle. [Ёлек-трон-ный –е-сурс]. ^^V –е-жим ƒо-сту-па:
  []
 
 
-Underfull \hbox (badness 6775) in paragraph at lines 31--31
+Underfull \hbox (badness 6775) in paragraph at lines 33--33
 []\T2A/cmr/m/n/14.4 (+20) IBM Db2 | IBM. [Ёлек-трон-ный –е-сурс]. ^^V –е-жим ƒо-сту-па:
  []
 
 
-Underfull \hbox (badness 4378) in paragraph at lines 31--31
+Underfull \hbox (badness 4378) in paragraph at lines 33--33
 []\T2A/cmr/m/n/14.4 (+20) SQLite Home Page. [Ёлек-трон-ный –е-сурс]. ^^V –е-жим ƒо-сту-па:
  []
 
-[20]
+[37]
 \openout2 = `09-appendix.aux'.
 
  (./09-appendix.tex
@@ -1650,35 +1736,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{appendixchapte
 l.2 	\chapter{}
                
 –Я–†–Ш–Ы–Ю–Ц–Х–Э–Ш–Х \CYRA .
-) [21
+) [38
 
 
 ] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./coursework.aux (./01-definitions.aux) (./03-introduction.aux) (./04-analysis.aux) (./05-design.aux) (./06-implementation.aux) (./07-research.aux) (./08-conclusion.aux) (./09-appendix.aux))
+(./coursework.aux (./00-essay.aux) (./01-definitions.aux) (./03-introduction.aux) (./04-analysis.aux) (./05-design.aux) (./06-implementation.aux) (./07-research.aux) (./08-conclusion.aux) (./09-appendix.aux))
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `coursework.out' has not changed.
-(rerunfilecheck)             Checksum: AE955A57D299A3198134D43C92A79B03;5381.
+(rerunfilecheck)             Checksum: C1F98B717E9B3A879FB96CA54BF725CE;7414.
 Package logreq Info: Writing requests to 'coursework.run.xml'.
 \openout1 = `coursework.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50511 strings out of 476025
- 1099193 string characters out of 5796533
- 2207149 words of memory out of 5000000
- 69852 multiletter control sequences out of 15000+600000
- 536414 words of font info for 150 fonts, out of 8000000 for 9000
+ 51602 strings out of 476025
+ 1115244 string characters out of 5796532
+ 2299828 words of memory out of 5000000
+ 70500 multiletter control sequences out of 15000+600000
+ 537160 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  124i,19n,122p,1185b,3183s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on coursework.pdf (21 pages, 682915 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1440.pfb>
+Output written on coursework.pdf (38 pages, 801858 bytes).
 PDF statistics:
- 406 PDF objects out of 1000 (max. 8388607)
- 339 compressed objects within 4 object streams
- 82 named destinations out of 1000 (max. 500000)
- 39634 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 1063 PDF objects out of 1200 (max. 8388607)
+ 908 compressed objects within 10 object streams
+ 465 named destinations out of 1000 (max. 500000)
+ 40244 words of extra memory for PDF output out of 42996 (max. 10000000)
 

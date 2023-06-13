@@ -22,7 +22,7 @@ class AuthPageState extends State<AuthPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      final authService = GetIt.I.get<AuthService>();
+      final authService = GetIt.I.get<IAuthService>();
       return await authService.login(
           loginController.text, passwordController.text);
     }

@@ -1,0 +1,55 @@
+generator client {
+  provider = "dart run orm"
+  output   = "../lib/data/repositories/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+model UsersDAO {
+  id           String           @id @default(uuid())
+  account_name String           @unique
+  password     String
+  role         Role
+  dictionary   DictionariesDAO?
+  texts        TextsDAO[]
+}
+
+model KanjiDAO {
+  glyph    String @id
+  onyoumi  String
+  kunyoumi String
+  meaning  String
+  words    WordsDAO[]
+}
+
+model DictionariesDAO {
+  id       String     @id @default(uuid())
+  title    String
+  owner_id String     @unique
+  owner    UsersDAO   @relation(fields: [owner_id], references: [id])
+  words    WordsDAO[]
+}
+
+model WordsDAO {
+  word        String            @id
+  translation String
+  reading     String
+  dicts       DictionariesDAO[]
+  kanjis      KanjiDAO[]
+}
+
+model TextsDAO {
+  id      String     @id @default(uuid())
+  title   String
+  text    String
+  readers UsersDAO[]
+}

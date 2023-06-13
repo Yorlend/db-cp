@@ -11,5 +11,6 @@
             "password": "cw_password"
         }
     ],
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "cmake.sourceDirectory": "/home/yorlend/prog/db-cp/kango/linux/flutter"
 }
